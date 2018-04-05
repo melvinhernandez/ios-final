@@ -14,6 +14,9 @@
 		B03CEA432075BA2E00601248 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B03CEA422075BA2E00601248 /* Assets.xcassets */; };
 		B03CEA462075BA2E00601248 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B03CEA442075BA2E00601248 /* LaunchScreen.storyboard */; };
 		B03CEA4E2075BB9900601248 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B03CEA4D2075BB9900601248 /* GoogleService-Info.plist */; };
+		B0A8C5C32075F7650072FA2A /* OverridenLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8C5C22075F7650072FA2A /* OverridenLoginViewController.swift */; };
+		B0A8C5C52075F7B50072FA2A /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8C5C42075F7B50072FA2A /* LoginCoordinator.swift */; };
+		B0A8C5C72075FC910072FA2A /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0A8C5C62075FC910072FA2A /* Background.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		B03CEA452075BA2E00601248 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B03CEA472075BA2E00601248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B03CEA4D2075BB9900601248 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Coughee/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B0A8C5C22075F7650072FA2A /* OverridenLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverridenLoginViewController.swift; sourceTree = "<group>"; };
+		B0A8C5C42075F7B50072FA2A /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		B0A8C5C62075FC910072FA2A /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Background.jpg; path = Assets.xcassets/Background.jpg; sourceTree = "<group>"; };
 		C4B9FBF799DA85288838660F /* Pods_Coughee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coughee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F5C7F61916E01208C6A3FB /* Pods-Coughee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coughee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Coughee/Pods-Coughee.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,8 +89,11 @@
 			children = (
 				B03CEA3B2075BA2E00601248 /* AppDelegate.swift */,
 				B03CEA3D2075BA2E00601248 /* ViewController.swift */,
-				B03CEA3F2075BA2E00601248 /* Main.storyboard */,
+				B0A8C5C22075F7650072FA2A /* OverridenLoginViewController.swift */,
+				B0A8C5C42075F7B50072FA2A /* LoginCoordinator.swift */,
 				B03CEA422075BA2E00601248 /* Assets.xcassets */,
+				B03CEA3F2075BA2E00601248 /* Main.storyboard */,
+				B0A8C5C62075FC910072FA2A /* Background.jpg */,
 				B03CEA442075BA2E00601248 /* LaunchScreen.storyboard */,
 				B03CEA472075BA2E00601248 /* Info.plist */,
 			);
@@ -155,6 +164,7 @@
 			files = (
 				B03CEA462075BA2E00601248 /* LaunchScreen.storyboard in Resources */,
 				B03CEA4E2075BB9900601248 /* GoogleService-Info.plist in Resources */,
+				B0A8C5C72075FC910072FA2A /* Background.jpg in Resources */,
 				B03CEA432075BA2E00601248 /* Assets.xcassets in Resources */,
 				B03CEA412075BA2E00601248 /* Main.storyboard in Resources */,
 			);
@@ -170,12 +180,22 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Coughee/Pods-Coughee-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/ILLoginKit/ILLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ILLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +245,8 @@
 			files = (
 				B03CEA3E2075BA2E00601248 /* ViewController.swift in Sources */,
 				B03CEA3C2075BA2E00601248 /* AppDelegate.swift in Sources */,
+				B0A8C5C52075F7B50072FA2A /* LoginCoordinator.swift in Sources */,
+				B0A8C5C32075F7650072FA2A /* OverridenLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

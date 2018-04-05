@@ -7,4 +7,6 @@ target 'Coughee' do
 
   # Pods for Coughee
   pod 'Firebase/Core'
+  # Pod for login UI
+  pod 'ILLoginKit'
 end
