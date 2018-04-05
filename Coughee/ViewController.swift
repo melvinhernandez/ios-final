@@ -8,6 +8,7 @@
 
 import UIKit
 import ILLoginKit
+import FirebaseAuth
 
 class ViewController: UIViewController {
     
@@ -31,20 +32,20 @@ class ViewController: UIViewController {
         guard !hasShownLogin else {
             return
         }
-        
-        hasShownLogin = true
-        loginCoordinator.start()
-        // present(loginViewController, animated: true, completion: nil)
+        // If user not authenticated then show login screen.
+        if Auth.auth().currentUser == nil {
+            hasShownLogin = true
+            loginCoordinator.start()
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }
 
-// MARK: - LoginViewController Delegate
+// This is just from the ILLoginKit Documentation.
 
 extension ViewController: LoginViewControllerDelegate {
     
