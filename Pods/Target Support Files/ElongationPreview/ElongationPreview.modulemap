@@ -1,0 +1,6 @@
+framework module ElongationPreview {
+  umbrella header "ElongationPreview-umbrella.h"
+
+  export *
+  module * { export * }
+}

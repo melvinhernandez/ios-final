@@ -36,6 +36,8 @@ class ViewController: UIViewController {
         if Auth.auth().currentUser == nil {
             hasShownLogin = true
             loginCoordinator.start()
+        } else {
+            self.performSegue(withIdentifier: "welcomeToMain", sender: nil)
         }
     }
     
