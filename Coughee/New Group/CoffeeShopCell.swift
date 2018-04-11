@@ -43,7 +43,6 @@ class CoffeeShopCell: BaseCell {
         backgroundColor = .gray
         
         addSubview(backgroundImageView)
-        backgroundImageView.image = UIImage(named: "fsm")
         // Background image constraints
         addConstraintsWithFormat(format: "H:|[v0]|", views: backgroundImageView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: backgroundImageView)

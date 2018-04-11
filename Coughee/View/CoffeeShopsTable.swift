@@ -27,7 +27,7 @@ class CoffeeShopsTable: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let coffeeShop = coffeeShops[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "coffeeShopCell", for: indexPath) as! CoffeeShopCell
-//        cell.background.image = UIImage(named: "fsm")
+        cell.backgroundImageView.image = indexPath.row % 2 == 0 ? UIImage(named: "fsm") : UIImage(named: "milano")
         cell.titleText.text = coffeeShop.name
         cell.descriptionText.text = coffeeShop.open ? "Open" : "Closed"
         return cell
@@ -35,6 +35,12 @@ class CoffeeShopsTable: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(180)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let coffeeShopController = CoffeeShopViewController()
+        coffeeShopController.coffeeShop = coffeeShops[indexPath.row]
+        navigationController?.pushViewController(coffeeShopController, animated: true)
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

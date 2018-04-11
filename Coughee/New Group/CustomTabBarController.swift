@@ -39,13 +39,13 @@ class CustomTabBarController: UITabBarController {
         
 //        let layout = UITableViewLayout()
         let homeController = CoffeeShopsTable()
-        let coffeeShopsController = UINavigationController(rootViewController: homeController)
-        coffeeShopsController.tabBarItem.title = "Home"
+        let navigationController = UINavigationController(rootViewController: homeController)
+        navigationController.tabBarItem.title = "Home"
         
         let layout = UICollectionViewFlowLayout()
         let feedController = FeedViewController(collectionViewLayout: layout)
         feedController.tabBarItem.title = "Feed"
-        viewControllers = [coffeeShopsController, feedController]
+        viewControllers = [navigationController, feedController]
     }
 }
 
