@@ -12,6 +12,9 @@ target 'Coughee' do
   pod 'FirebaseDatabase'
   # Pod for login UI
   pod 'ILLoginKit'
-
+  #pods for google API
+  pod 'GooglePlaces'
+  pod 'GooglePlacePicker'
+  pod 'GoogleMaps'
   
 end

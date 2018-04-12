@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+import GooglePlaces
 
 class CoffeeShopsTable: UITableViewController {
     
@@ -20,7 +20,6 @@ class CoffeeShopsTable: UITableViewController {
         tableView.register(CoffeeShopCell.self, forCellReuseIdentifier: "coffeeShopCell")
     }
     
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return coffeeShops.count
     }
@@ -28,23 +27,43 @@ class CoffeeShopsTable: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let coffeeShop = coffeeShops[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "coffeeShopCell", for: indexPath) as! CoffeeShopCell
-        cell.backgroundImageView.image = indexPath.row % 2 == 0 ? UIImage(named: "fsm") : UIImage(named: "milano")
-        cell.titleText.text = coffeeShop.name
-        cell.descriptionText.text = coffeeShop.open ? "Open" : "Closed"
+        loadFirstPhotoForPlace(placeID: coffeeShop.placeID, shop: coffeeShop, cell: cell)
         return cell
     }
+    func loadFirstPhotoForPlace(placeID: String, shop: CoffeeShop, cell: CoffeeShopCell) {
+        GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
+            if let error = error {
+                // TODO: handle the error.
+                print("Error: \(error.localizedDescription)")
+            } else {
+                if let firstPhoto = photos?.results.first {
+                    self.loadImageForMetadata(photoMetadata: firstPhoto, shop: shop, cell: cell)
+                }
+            }
+        }
+    }
     
+    func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata, shop: CoffeeShop, cell: CoffeeShopCell) {
+        GMSPlacesClient.shared().loadPlacePhoto(photoMetadata, callback: {
+            (photo, error) -> Void in
+            if let error = error {
+                // TODO: handle the error.
+                print("Error: \(error.localizedDescription)")
+            } else {
+                DispatchQueue.main.async {
+                    shop.image = photo
+                    cell.backgroundImageView.image = photo
+                    cell.titleText.text = shop.name
+                    cell.descriptionText.text = shop.open! ? "Closed" : "Open"
+                }
+            }
+        })
+    }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(180)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        do {
-            try Auth.auth().signOut()
-            self.dismiss(animated: true, completion: nil)
-        } catch let signOutError as NSError {
-            print(signOutError)
-        }
         let coffeeShopController = CoffeeShopViewController()
         coffeeShopController.coffeeShop = coffeeShops[indexPath.row]
         navigationController?.pushViewController(coffeeShopController, animated: true)

@@ -8,6 +8,9 @@
 
 import UIKit
 import Firebase
+import GooglePlaces
+import GoogleMaps
+import GooglePlacePicker
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Setup Firebase as our user auth and database.
         FirebaseApp.configure()
+        
+        // API Keys for google api calls.
+        GMSPlacesClient.provideAPIKey("AIzaSyC7G9bC4TpcM9O_L1_O7eFNnuti1Qu23iI")
+        GMSServices.provideAPIKey("AIzaSyC7G9bC4TpcM9O_L1_O7eFNnuti1Qu23iI")
+        
         // Setup our views to be programmatically created.
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = EntryController()
