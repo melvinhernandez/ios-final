@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CoffeeShopsTable: UITableViewController {
     
@@ -38,6 +39,12 @@ class CoffeeShopsTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        do {
+            try Auth.auth().signOut()
+            self.dismiss(animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print(signOutError)
+        }
         let coffeeShopController = CoffeeShopViewController()
         coffeeShopController.coffeeShop = coffeeShops[indexPath.row]
         navigationController?.pushViewController(coffeeShopController, animated: true)

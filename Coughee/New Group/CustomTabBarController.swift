@@ -13,31 +13,10 @@ import FirebaseAuth
 class CustomTabBarController: UITabBarController {
     
     
-//    var hasShownLogin = false
-//
-//    lazy var loginCoordinator: LoginCoordinator = {
-//        return LoginCoordinator(rootViewController: self)
-//    }()
-//
-//    lazy var loginViewController: OverridenLoginViewController = {
-//        let controller = OverridenLoginViewController()
-//        controller.delegate = self
-//        return controller
-//    }()
-    
     override func viewDidLoad() {
+        print("okay???")
         super.viewDidLoad()
-        
-//        guard !hasShownLogin else {
-//            return
-//        }
-        // If user not authenticated then show login screen.
-//        if Auth.auth().currentUser == nil {
-//        hasShownLogin = true
-//        loginCoordinator.start()
-//        }
-        
-//        let layout = UITableViewLayout()
+
         let homeController = CoffeeShopsTable()
         let navigationController = UINavigationController(rootViewController: homeController)
         navigationController.tabBarItem.title = "Home"
@@ -48,20 +27,3 @@ class CustomTabBarController: UITabBarController {
         viewControllers = [navigationController, feedController]
     }
 }
-
-//extension ViewController: LoginViewControllerDelegate {
-//    
-//    func didSelectLogin(_ viewController: UIViewController, email: String, password: String) {
-//        print("DID SELECT LOGIN; EMAIL = \(email); PASSWORD = \(password)")
-//    }
-//    
-//    func didSelectForgotPassword(_ viewController: UIViewController) {
-//        print("LOGIN DID SELECT FORGOT PASSWORD")
-//    }
-//    
-//    func loginDidSelectBack(_ viewController: UIViewController) {
-//        print("LOGIN DID SELECT BACK")
-//    }
-//    
-//}
-
