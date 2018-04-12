@@ -12,8 +12,14 @@ import GoogleMaps
 class CoffeeShopViewController: UIViewController {
     
     var coffeeShop:CoffeeShop?
+    
     var mapContainer:GMSMapView = {
         let container = GMSMapView()
+        return container
+    }()
+    
+    let bottomContainer: CoffeeShopContent = {
+        let container = CoffeeShopContent()
         return container
     }()
     
@@ -22,6 +28,15 @@ class CoffeeShopViewController: UIViewController {
         if let shop = self.coffeeShop {
             navigationItem.title = shop.name
         }
+        setupMap()
+        setupContent()
+        
+        // TODO: If you want to offset the content to take into account the menu bar
+        //          then watch: https://youtu.be/rRhJGnSmEKQ?list=PL0dzCUj1L5JGKdVUtA5xds1zcyzsz7HLj&t=1096
+        
+    }
+    
+    func setupMap() {
         //setup mapView
         let camera = GMSCameraPosition.camera(withLatitude: coffeeShop!.lat!, longitude: coffeeShop!.long!, zoom: 18)
         let mapView = GMSMapView.map(withFrame: .zero, camera:camera)
@@ -33,7 +48,7 @@ class CoffeeShopViewController: UIViewController {
             mapContainer.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             mapContainer.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             mapContainer.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            mapContainer.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            mapContainer.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3)
             ])
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2DMake(coffeeShop!.lat!, coffeeShop!.long!)
@@ -41,4 +56,17 @@ class CoffeeShopViewController: UIViewController {
         marker.snippet = "Berkeley"
         marker.map = mapView
     }
+    
+    func setupContent() {
+        self.view.addSubview(bottomContainer)
+        bottomContainer.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bottomContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            bottomContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            bottomContainer.topAnchor.constraint(equalTo: mapContainer.bottomAnchor),
+            bottomContainer.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            ])
+
+    }
+
 }

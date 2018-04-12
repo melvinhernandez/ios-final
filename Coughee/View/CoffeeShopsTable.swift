@@ -15,7 +15,6 @@ class CoffeeShopsTable: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.title = "Coffee Shops"
         tableView.register(CoffeeShopCell.self, forCellReuseIdentifier: "coffeeShopCell")
     }
@@ -66,11 +65,10 @@ class CoffeeShopsTable: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let coffeeShopController = CoffeeShopViewController()
         coffeeShopController.coffeeShop = coffeeShops[indexPath.row]
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
         navigationController?.pushViewController(coffeeShopController, animated: true)
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        segue.destination
-//    }
 
 }

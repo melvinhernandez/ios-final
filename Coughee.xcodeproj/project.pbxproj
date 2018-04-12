@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		5D45953D2CCAC5DC11C0DAE2 /* Pods_Coughee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4B9FBF799DA85288838660F /* Pods_Coughee.framework */; };
 		B00F4B6F207EC64B00FBAABC /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F4B6E207EC64B00FBAABC /* EntryController.swift */; };
+		B00F4B71207F3EFC00FBAABC /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F4B70207F3EFC00FBAABC /* MenuBar.swift */; };
+		B00F4B73207F42B100FBAABC /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F4B72207F42B100FBAABC /* constants.swift */; };
+		B00F4B76207F48E400FBAABC /* BaseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F4B75207F48E400FBAABC /* BaseCollectionCell.swift */; };
+		B00F4B78207F59EA00FBAABC /* CoffeeShopContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F4B77207F59EA00FBAABC /* CoffeeShopContent.swift */; };
 		B03653D220785C07006019D3 /* CoffeeShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03653D120785C07006019D3 /* CoffeeShop.swift */; };
 		B03653D4207861F7006019D3 /* CoffeeShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03653D3207861F7006019D3 /* CoffeeShopCell.swift */; };
 		B03CEA3C2075BA2E00601248 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03CEA3B2075BA2E00601248 /* AppDelegate.swift */; };
@@ -28,6 +32,10 @@
 /* Begin PBXFileReference section */
 		3F6857DCFB7BDD0198B6509E /* Pods-Coughee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coughee.release.xcconfig"; path = "Pods/Target Support Files/Pods-Coughee/Pods-Coughee.release.xcconfig"; sourceTree = "<group>"; };
 		B00F4B6E207EC64B00FBAABC /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EntryController.swift; path = Coughee/View/EntryController.swift; sourceTree = SOURCE_ROOT; };
+		B00F4B70207F3EFC00FBAABC /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuBar.swift; path = Coughee/View/MenuBar.swift; sourceTree = SOURCE_ROOT; };
+		B00F4B72207F42B100FBAABC /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		B00F4B75207F48E400FBAABC /* BaseCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseCollectionCell.swift; path = Coughee/View/BaseCollectionCell.swift; sourceTree = SOURCE_ROOT; };
+		B00F4B77207F59EA00FBAABC /* CoffeeShopContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopContent.swift; sourceTree = "<group>"; };
 		B03653D120785C07006019D3 /* CoffeeShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShop.swift; sourceTree = "<group>"; };
 		B03653D3207861F7006019D3 /* CoffeeShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopCell.swift; sourceTree = "<group>"; };
 		B03CEA382075BA2E00601248 /* Coughee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coughee.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +85,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B00F4B74207F42BA00FBAABC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B00F4B72207F42B100FBAABC /* constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		B03653CE20785B3D006019D3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +108,9 @@
 				B057992E207D7BE200A6EF5C /* CustomTabBarController.swift */,
 				B0579930207D841000A6EF5C /* CoffeeShopsTable.swift */,
 				B05FF2FA207E8E8000360625 /* CoffeeShopViewController.swift */,
+				B00F4B77207F59EA00FBAABC /* CoffeeShopContent.swift */,
+				B00F4B70207F3EFC00FBAABC /* MenuBar.swift */,
+				B00F4B75207F48E400FBAABC /* BaseCollectionCell.swift */,
 				B03653D3207861F7006019D3 /* CoffeeShopCell.swift */,
 				B05FF2F6207DC7E200360625 /* FeedViewController.swift */,
 				B05FF2F8207DC88E00360625 /* PostCell.swift */,
@@ -122,6 +141,7 @@
 		B03CEA3A2075BA2E00601248 /* Coughee */ = {
 			isa = PBXGroup;
 			children = (
+				B00F4B74207F42BA00FBAABC /* Helpers */,
 				B0B0C9512076B53E007B5088 /* App Utilities */,
 				B03653CE20785B3D006019D3 /* Model */,
 				B0B0C9502076B502007B5088 /* Login Screen */,
@@ -304,11 +324,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B00F4B78207F59EA00FBAABC /* CoffeeShopContent.swift in Sources */,
 				B057992F207D7BE200A6EF5C /* CustomTabBarController.swift in Sources */,
 				B03CEA3C2075BA2E00601248 /* AppDelegate.swift in Sources */,
+				B00F4B71207F3EFC00FBAABC /* MenuBar.swift in Sources */,
 				B05FF2F7207DC7E200360625 /* FeedViewController.swift in Sources */,
 				B03653D220785C07006019D3 /* CoffeeShop.swift in Sources */,
 				B0579931207D841000A6EF5C /* CoffeeShopsTable.swift in Sources */,
+				B00F4B76207F48E400FBAABC /* BaseCollectionCell.swift in Sources */,
+				B00F4B73207F42B100FBAABC /* constants.swift in Sources */,
 				B00F4B6F207EC64B00FBAABC /* EntryController.swift in Sources */,
 				B0A8C5C52075F7B50072FA2A /* LoginCoordinator.swift in Sources */,
 				B03653D4207861F7006019D3 /* CoffeeShopCell.swift in Sources */,
