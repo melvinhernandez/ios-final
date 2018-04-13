@@ -14,16 +14,32 @@ class CustomTabBarController: UITabBarController {
     
     
     override func viewDidLoad() {
-        print("okay???")
         super.viewDidLoad()
 
-        let homeController = CoffeeShopsTable()
-        let navigationController = UINavigationController(rootViewController: homeController)
-        navigationController.tabBarItem.title = "Home"
+        let coffeeShopController = CoffeeShopsTable()
+        let coffeeNavigationController = UINavigationController(rootViewController: coffeeShopController)
+        coffeeNavigationController.navigationController?.navigationBar.tintColor = .white
+        coffeeNavigationController.tabBarItem.title = "Home"
+        coffeeNavigationController.tabBarItem.image = UIImage(named: "home")
+        coffeeNavigationController.tabBarItem.selectedImage = UIImage(named: "home-selected")
+
         
         let layout = UICollectionViewFlowLayout()
         let feedController = FeedViewController(collectionViewLayout: layout)
+        let userFeedNavigationController = UINavigationController(rootViewController: feedController)
+        let navAppearance = UINavigationBar.appearance()
+        navAppearance.barTintColor = Colors.midPastelBlue
+        navAppearance.tintColor = .white
+        navAppearance.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
+        
         feedController.tabBarItem.title = "Feed"
-        viewControllers = [navigationController, feedController]
+        feedController.tabBarItem.image = UIImage(named: "cup")
+        feedController.tabBarItem.selectedImage = UIImage(named: "cup-selected")
+        feedController.tabBarItem.imageInsets = UIEdgeInsetsMake(0, 3, -3, -5)
+        
+        viewControllers = [coffeeNavigationController, userFeedNavigationController]
+        tabBar.isTranslucent = false
+        tabBar.tintColor = Colors.darkPastelBlue
     }
 }
