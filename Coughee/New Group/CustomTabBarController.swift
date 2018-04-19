@@ -38,8 +38,20 @@ class CustomTabBarController: UITabBarController {
         feedController.tabBarItem.selectedImage = UIImage(named: "cup-selected")
         feedController.tabBarItem.imageInsets = UIEdgeInsetsMake(0, 3, -3, -5)
         
-        viewControllers = [coffeeNavigationController, userFeedNavigationController]
+        let userProfileController = UserViewController()
+        let userNavigationController = UINavigationController(rootViewController: userProfileController)
+        
+        userProfileController.tabBarItem.title = "User"
+        userProfileController.tabBarItem.image = UIImage(named: "user")
+        userProfileController.tabBarItem.selectedImage = UIImage(named: "user-selected")
+        
+        
+        viewControllers = [coffeeNavigationController, userFeedNavigationController, userNavigationController]
         tabBar.isTranslucent = false
-        tabBar.tintColor = Colors.darkPastelBlue
+        tabBar.tintColor = Colors.dirtyBrown
+        tabBar.barTintColor = Colors.brownLatte
+        tabBar.layer.borderWidth = 0.50
+        tabBar.layer.borderColor = UIColor.clear.cgColor
+        tabBar.clipsToBounds = true
     }
 }

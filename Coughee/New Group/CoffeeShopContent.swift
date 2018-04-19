@@ -77,7 +77,7 @@ class CoffeeShopContent: UIView, UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ContentCell
         cell.stuffTitle.text = contentStuff[indexPath.item]
-        cell.backgroundColor = indexPath.item % 2 == 0 ? .blue : .purple
+        cell.backgroundColor = .white
         return cell
     }
     
@@ -99,7 +99,7 @@ class ContentCell: BaseCollectionCell {
     let stuffTitle: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .red
+        label.textColor = Colors.darkGray
         label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()

@@ -16,5 +16,7 @@ target 'Coughee' do
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
-  
+
+  # Pod for fontawesome icons
+  pod 'FontAwesome.swift' 
 end
