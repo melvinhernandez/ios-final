@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import FontAwesome_swift
 
 class CoffeeShopViewController: UIViewController {
     
@@ -28,13 +29,21 @@ class CoffeeShopViewController: UIViewController {
         if let shop = self.coffeeShop {
             navigationItem.title = shop.name
         }
+        
+        setupCreatePostButton()
         setupMap()
         setupContent()
-        
-        // TODO: If you want to offset the content to take into account the menu bar
-        //          then watch: https://youtu.be/rRhJGnSmEKQ?list=PL0dzCUj1L5JGKdVUtA5xds1zcyzsz7HLj&t=1096
-        
     }
+    
+    func setupCreatePostButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "new", style: .done, target: self, action: #selector(createNewPost))
+        let attributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): UIFont.fontAwesome(ofSize: 20)] as [NSAttributedStringKey: Any]
+        let newPostIcon = String.fontAwesomeIcon(code: "fa-plus")
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes(attributes, for: .normal)
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes(attributes, for: .selected)
+        navigationItem.rightBarButtonItem?.title = newPostIcon
+    }
+    
     
     func setupMap() {
         //setup mapView
@@ -67,6 +76,12 @@ class CoffeeShopViewController: UIViewController {
             bottomContainer.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
             ])
 
+    }
+    
+    @objc func createNewPost() {
+        print("hello")
+        let newPostView = CreatePostViewController()
+        self.present(newPostView, animated: true, completion: nil)
     }
 
 }

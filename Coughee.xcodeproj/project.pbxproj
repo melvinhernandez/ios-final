@@ -19,6 +19,7 @@
 		B03CEA462075BA2E00601248 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B03CEA442075BA2E00601248 /* LaunchScreen.storyboard */; };
 		B03CEA4E2075BB9900601248 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B03CEA4D2075BB9900601248 /* GoogleService-Info.plist */; };
 		B04636CB20882DE900E6E4E7 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04636CA20882DE900E6E4E7 /* UserViewController.swift */; };
+		B04636CD20884D7000E6E4E7 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04636CC20884D7000E6E4E7 /* CreatePostViewController.swift */; };
 		B057992F207D7BE200A6EF5C /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B057992E207D7BE200A6EF5C /* CustomTabBarController.swift */; };
 		B0579931207D841000A6EF5C /* CoffeeShopsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0579930207D841000A6EF5C /* CoffeeShopsTable.swift */; };
 		B0579932207D96A600A6EF5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B03CEA422075BA2E00601248 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		B03CEA472075BA2E00601248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B03CEA4D2075BB9900601248 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Coughee/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B04636CA20882DE900E6E4E7 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserViewController.swift; path = Coughee/View/UserViewController.swift; sourceTree = SOURCE_ROOT; };
+		B04636CC20884D7000E6E4E7 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreatePostViewController.swift; path = Coughee/View/CreatePostViewController.swift; sourceTree = SOURCE_ROOT; };
 		B057992E207D7BE200A6EF5C /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTabBarController.swift; path = "Coughee/New Group/CustomTabBarController.swift"; sourceTree = SOURCE_ROOT; };
 		B0579930207D841000A6EF5C /* CoffeeShopsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoffeeShopsTable.swift; path = Coughee/View/CoffeeShopsTable.swift; sourceTree = SOURCE_ROOT; };
 		B05FF2F6207DC7E200360625 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				B057992E207D7BE200A6EF5C /* CustomTabBarController.swift */,
 				B0579930207D841000A6EF5C /* CoffeeShopsTable.swift */,
 				B05FF2FA207E8E8000360625 /* CoffeeShopViewController.swift */,
+				B04636CC20884D7000E6E4E7 /* CreatePostViewController.swift */,
 				B00F4B77207F59EA00FBAABC /* CoffeeShopContent.swift */,
 				B00F4B70207F3EFC00FBAABC /* MenuBar.swift */,
 				B04636CA20882DE900E6E4E7 /* UserViewController.swift */,
@@ -335,6 +338,7 @@
 				B03CEA3C2075BA2E00601248 /* AppDelegate.swift in Sources */,
 				B00F4B71207F3EFC00FBAABC /* MenuBar.swift in Sources */,
 				B05FF2F7207DC7E200360625 /* FeedViewController.swift in Sources */,
+				B04636CD20884D7000E6E4E7 /* CreatePostViewController.swift in Sources */,
 				B03653D220785C07006019D3 /* CoffeeShop.swift in Sources */,
 				B0579931207D841000A6EF5C /* CoffeeShopsTable.swift in Sources */,
 				B00F4B76207F48E400FBAABC /* BaseCollectionCell.swift in Sources */,
