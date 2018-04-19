@@ -5,6 +5,7 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - Eureka (4.1.1)
   - FBSDKCoreKit (4.31.1):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.31.0):
@@ -67,6 +68,7 @@ PODS:
   - Validator (2.1.1)
 
 DEPENDENCIES:
+  - Eureka
   - Firebase/Core
   - FirebaseAuth
   - FirebaseDatabase
@@ -79,6 +81,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
   FBSDKCoreKit: e08ccfcefa7bc1347a07c276dac9bf6c7fe57024
   FBSDKLoginKit: 95a252ddffd6919c0f132a02292f0824616d8709
   Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
@@ -99,6 +102,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Validator: b1793fbfd0046097551d0edd18e2c30792d69ef5
 
-PODFILE CHECKSUM: 2c10497d9f809f76dcaeee7688ce6e164a0c9d1e
+PODFILE CHECKSUM: 60cdd787b3e0a60851c6e296b850796e76fc2575
 
 COCOAPODS: 1.4.0

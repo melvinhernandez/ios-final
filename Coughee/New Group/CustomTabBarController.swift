@@ -6,6 +6,8 @@
 //  Copyright © 2018 UC Berkeley. All rights reserved.
 //
 
+// File that handles the app's tab bar.
+
 import UIKit
 import ILLoginKit
 import FirebaseAuth

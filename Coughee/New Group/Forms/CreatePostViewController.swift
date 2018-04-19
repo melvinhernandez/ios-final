@@ -7,14 +7,14 @@
 //
 
 import UIKit
+import Eureka
 
-class CreatePostViewController: UIViewController {
+class CreatePostViewController: FormViewController {
     
     let createPostBtn: UIButton = {
         let button = UIButton(type: .system) // let preferred over var here
         button.setTitle("Create", for: [])
         button.addTarget(self, action: #selector(handleCreatePost), for: UIControlEvents.touchUpInside)
-        button.backgroundColor = Colors.darkPastelBlue
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -23,6 +23,7 @@ class CreatePostViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupViews()
+//        createPostForm()
     }
     
     func setupViews() {
@@ -35,6 +36,15 @@ class CreatePostViewController: UIViewController {
             createPostBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ]
         NSLayoutConstraint.activate(btnConstraints)
+    }
+    
+    // Create form with Eureka
+    func createPostForm() {
+        form +++ Section("Section1")
+            <<< TextRow("caption") { row in
+                row.title = "Caption"
+                row.placeholder = "What's poppin'"
+            }
     }
     
     @objc func handleCreatePost() {

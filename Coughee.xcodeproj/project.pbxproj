@@ -19,13 +19,13 @@
 		B03CEA462075BA2E00601248 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B03CEA442075BA2E00601248 /* LaunchScreen.storyboard */; };
 		B03CEA4E2075BB9900601248 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B03CEA4D2075BB9900601248 /* GoogleService-Info.plist */; };
 		B04636CB20882DE900E6E4E7 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04636CA20882DE900E6E4E7 /* UserViewController.swift */; };
-		B04636CD20884D7000E6E4E7 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04636CC20884D7000E6E4E7 /* CreatePostViewController.swift */; };
+		B04636D3208869C400E6E4E7 /* CoffeeShopsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04636D1208869C400E6E4E7 /* CoffeeShopsTable.swift */; };
+		B04636D4208869C400E6E4E7 /* CoffeeShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04636D2208869C400E6E4E7 /* CoffeeShopViewController.swift */; };
+		B04636D920886A9A00E6E4E7 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04636D820886A9A00E6E4E7 /* CreatePostViewController.swift */; };
 		B057992F207D7BE200A6EF5C /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B057992E207D7BE200A6EF5C /* CustomTabBarController.swift */; };
-		B0579931207D841000A6EF5C /* CoffeeShopsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0579930207D841000A6EF5C /* CoffeeShopsTable.swift */; };
 		B0579932207D96A600A6EF5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B03CEA422075BA2E00601248 /* Assets.xcassets */; };
 		B05FF2F7207DC7E200360625 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FF2F6207DC7E200360625 /* FeedViewController.swift */; };
 		B05FF2F9207DC88E00360625 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FF2F8207DC88E00360625 /* PostCell.swift */; };
-		B05FF2FB207E8E8000360625 /* CoffeeShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FF2FA207E8E8000360625 /* CoffeeShopViewController.swift */; };
 		B0A8C5C32075F7650072FA2A /* OverridenLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8C5C22075F7650072FA2A /* OverridenLoginViewController.swift */; };
 		B0A8C5C52075F7B50072FA2A /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8C5C42075F7B50072FA2A /* LoginCoordinator.swift */; };
 		B0A8C5C72075FC910072FA2A /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0A8C5C62075FC910072FA2A /* Background.jpg */; };
@@ -34,9 +34,9 @@
 /* Begin PBXFileReference section */
 		3F6857DCFB7BDD0198B6509E /* Pods-Coughee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coughee.release.xcconfig"; path = "Pods/Target Support Files/Pods-Coughee/Pods-Coughee.release.xcconfig"; sourceTree = "<group>"; };
 		B00F4B6E207EC64B00FBAABC /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EntryController.swift; path = Coughee/View/EntryController.swift; sourceTree = SOURCE_ROOT; };
-		B00F4B70207F3EFC00FBAABC /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuBar.swift; path = Coughee/View/MenuBar.swift; sourceTree = SOURCE_ROOT; };
+		B00F4B70207F3EFC00FBAABC /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuBar.swift; path = "Coughee/New Group/Home/Coffee Shop View/MenuBar.swift"; sourceTree = SOURCE_ROOT; };
 		B00F4B72207F42B100FBAABC /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
-		B00F4B75207F48E400FBAABC /* BaseCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseCollectionCell.swift; path = Coughee/View/BaseCollectionCell.swift; sourceTree = SOURCE_ROOT; };
+		B00F4B75207F48E400FBAABC /* BaseCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseCollectionCell.swift; path = "Coughee/New Group/Feed/BaseCollectionCell.swift"; sourceTree = SOURCE_ROOT; };
 		B00F4B77207F59EA00FBAABC /* CoffeeShopContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopContent.swift; sourceTree = "<group>"; };
 		B03653D120785C07006019D3 /* CoffeeShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShop.swift; sourceTree = "<group>"; };
 		B03653D3207861F7006019D3 /* CoffeeShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopCell.swift; sourceTree = "<group>"; };
@@ -46,13 +46,13 @@
 		B03CEA452075BA2E00601248 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B03CEA472075BA2E00601248 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B03CEA4D2075BB9900601248 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Coughee/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		B04636CA20882DE900E6E4E7 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserViewController.swift; path = Coughee/View/UserViewController.swift; sourceTree = SOURCE_ROOT; };
-		B04636CC20884D7000E6E4E7 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreatePostViewController.swift; path = Coughee/View/CreatePostViewController.swift; sourceTree = SOURCE_ROOT; };
+		B04636CA20882DE900E6E4E7 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserViewController.swift; path = "Coughee/New Group/User Profile/UserViewController.swift"; sourceTree = SOURCE_ROOT; };
+		B04636D1208869C400E6E4E7 /* CoffeeShopsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeShopsTable.swift; sourceTree = "<group>"; };
+		B04636D2208869C400E6E4E7 /* CoffeeShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeShopViewController.swift; sourceTree = "<group>"; };
+		B04636D820886A9A00E6E4E7 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		B057992E207D7BE200A6EF5C /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTabBarController.swift; path = "Coughee/New Group/CustomTabBarController.swift"; sourceTree = SOURCE_ROOT; };
-		B0579930207D841000A6EF5C /* CoffeeShopsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoffeeShopsTable.swift; path = Coughee/View/CoffeeShopsTable.swift; sourceTree = SOURCE_ROOT; };
 		B05FF2F6207DC7E200360625 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		B05FF2F8207DC88E00360625 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostCell.swift; path = Coughee/View/PostCell.swift; sourceTree = SOURCE_ROOT; };
-		B05FF2FA207E8E8000360625 /* CoffeeShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoffeeShopViewController.swift; path = Coughee/View/CoffeeShopViewController.swift; sourceTree = SOURCE_ROOT; };
+		B05FF2F8207DC88E00360625 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostCell.swift; path = "Coughee/New Group/Feed/PostCell.swift"; sourceTree = SOURCE_ROOT; };
 		B0A8C5C22075F7650072FA2A /* OverridenLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverridenLoginViewController.swift; sourceTree = "<group>"; };
 		B0A8C5C42075F7B50072FA2A /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		B0A8C5C62075FC910072FA2A /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Background.jpg; sourceTree = "<group>"; };
@@ -110,16 +110,10 @@
 			isa = PBXGroup;
 			children = (
 				B057992E207D7BE200A6EF5C /* CustomTabBarController.swift */,
-				B0579930207D841000A6EF5C /* CoffeeShopsTable.swift */,
-				B05FF2FA207E8E8000360625 /* CoffeeShopViewController.swift */,
-				B04636CC20884D7000E6E4E7 /* CreatePostViewController.swift */,
-				B00F4B77207F59EA00FBAABC /* CoffeeShopContent.swift */,
-				B00F4B70207F3EFC00FBAABC /* MenuBar.swift */,
-				B04636CA20882DE900E6E4E7 /* UserViewController.swift */,
-				B00F4B75207F48E400FBAABC /* BaseCollectionCell.swift */,
-				B03653D3207861F7006019D3 /* CoffeeShopCell.swift */,
-				B05FF2F6207DC7E200360625 /* FeedViewController.swift */,
-				B05FF2F8207DC88E00360625 /* PostCell.swift */,
+				B04636D720886A7700E6E4E7 /* Forms */,
+				B04636D02088698900E6E4E7 /* Home */,
+				B04636CF2088695D00E6E4E7 /* User Profile */,
+				B04636CE2088694600E6E4E7 /* Feed */,
 			);
 			name = View;
 			path = "New Group";
@@ -156,6 +150,60 @@
 				B03CEA472075BA2E00601248 /* Info.plist */,
 			);
 			path = Coughee;
+			sourceTree = "<group>";
+		};
+		B04636CE2088694600E6E4E7 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				B05FF2F6207DC7E200360625 /* FeedViewController.swift */,
+				B05FF2F8207DC88E00360625 /* PostCell.swift */,
+				B00F4B75207F48E400FBAABC /* BaseCollectionCell.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		B04636CF2088695D00E6E4E7 /* User Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B04636CA20882DE900E6E4E7 /* UserViewController.swift */,
+			);
+			path = "User Profile";
+			sourceTree = "<group>";
+		};
+		B04636D02088698900E6E4E7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B04636D5208869F500E6E4E7 /* Coffee Shops Home Table */,
+				B04636D620886A1600E6E4E7 /* Coffee Shop View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		B04636D5208869F500E6E4E7 /* Coffee Shops Home Table */ = {
+			isa = PBXGroup;
+			children = (
+				B04636D1208869C400E6E4E7 /* CoffeeShopsTable.swift */,
+				B03653D3207861F7006019D3 /* CoffeeShopCell.swift */,
+			);
+			path = "Coffee Shops Home Table";
+			sourceTree = "<group>";
+		};
+		B04636D620886A1600E6E4E7 /* Coffee Shop View */ = {
+			isa = PBXGroup;
+			children = (
+				B04636D2208869C400E6E4E7 /* CoffeeShopViewController.swift */,
+				B00F4B77207F59EA00FBAABC /* CoffeeShopContent.swift */,
+				B00F4B70207F3EFC00FBAABC /* MenuBar.swift */,
+			);
+			path = "Coffee Shop View";
+			sourceTree = "<group>";
+		};
+		B04636D720886A7700E6E4E7 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				B04636D820886A9A00E6E4E7 /* CreatePostViewController.swift */,
+			);
+			path = Forms;
 			sourceTree = "<group>";
 		};
 		B0B0C9502076B502007B5088 /* Login Screen */ = {
@@ -257,6 +305,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Coughee/Pods-Coughee-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
@@ -270,6 +319,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
@@ -336,18 +386,18 @@
 				B04636CB20882DE900E6E4E7 /* UserViewController.swift in Sources */,
 				B057992F207D7BE200A6EF5C /* CustomTabBarController.swift in Sources */,
 				B03CEA3C2075BA2E00601248 /* AppDelegate.swift in Sources */,
+				B04636D4208869C400E6E4E7 /* CoffeeShopViewController.swift in Sources */,
 				B00F4B71207F3EFC00FBAABC /* MenuBar.swift in Sources */,
 				B05FF2F7207DC7E200360625 /* FeedViewController.swift in Sources */,
-				B04636CD20884D7000E6E4E7 /* CreatePostViewController.swift in Sources */,
 				B03653D220785C07006019D3 /* CoffeeShop.swift in Sources */,
-				B0579931207D841000A6EF5C /* CoffeeShopsTable.swift in Sources */,
 				B00F4B76207F48E400FBAABC /* BaseCollectionCell.swift in Sources */,
 				B00F4B73207F42B100FBAABC /* constants.swift in Sources */,
 				B00F4B6F207EC64B00FBAABC /* EntryController.swift in Sources */,
 				B0A8C5C52075F7B50072FA2A /* LoginCoordinator.swift in Sources */,
 				B03653D4207861F7006019D3 /* CoffeeShopCell.swift in Sources */,
-				B05FF2FB207E8E8000360625 /* CoffeeShopViewController.swift in Sources */,
+				B04636D3208869C400E6E4E7 /* CoffeeShopsTable.swift in Sources */,
 				B0A8C5C32075F7650072FA2A /* OverridenLoginViewController.swift in Sources */,
+				B04636D920886A9A00E6E4E7 /* CreatePostViewController.swift in Sources */,
 				B05FF2F9207DC88E00360625 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
