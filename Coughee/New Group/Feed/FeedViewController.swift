@@ -38,7 +38,7 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 75)
+        return CGSize(width: view.frame.width, height: 120)
     }
     
     func setupViews() {
