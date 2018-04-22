@@ -21,7 +21,7 @@ class CustomTabBarController: UITabBarController {
         let coffeeShopController = CoffeeShopsTable()
         let coffeeNavigationController = UINavigationController(rootViewController: coffeeShopController)
         coffeeNavigationController.navigationController?.navigationBar.tintColor = .white
-        coffeeNavigationController.tabBarItem.title = "Home"
+        coffeeNavigationController.tabBarItem.title = "Shops"
         coffeeNavigationController.tabBarItem.image = UIImage(named: "home")
         coffeeNavigationController.tabBarItem.selectedImage = UIImage(named: "home-selected")
 

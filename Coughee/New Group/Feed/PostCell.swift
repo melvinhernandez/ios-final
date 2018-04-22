@@ -88,9 +88,35 @@ class PostCell: BasePostCell {
         return label
     }()
     
+    let textContainer: UIView = {
+        let container = UIView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        return container
+    }()
+    
+    let leftBorder: UIView = {
+        let border = UIView()
+        border.backgroundColor = Colors.brownLatte
+        border.translatesAutoresizingMaskIntoConstraints = false
+        return border
+    }()
+    
+    let postCaption: UILabel = {
+        let caption = UILabel()
+        caption.font = UIFont.systemFont(ofSize: 14)
+        caption.textColor = Colors.darkGray
+        caption.text = "Howdy! I just had coffee with my boi Kanye. New album soon 😄"
+        caption.lineBreakMode = .byWordWrapping
+        caption.numberOfLines = 2
+        caption.translatesAutoresizingMaskIntoConstraints = false
+        return caption
+    }()
+    
     
     override func setupViews() {
+        
         self.backgroundColor = .white
+        
         addSubview(avatarView)
         addSubview(nameLabel)
         addSubview(timeLabel)
@@ -102,6 +128,10 @@ class PostCell: BasePostCell {
         addSubview(caffeineContainer)
         caffeineContainer.addSubview(coffeeIcon)
         caffeineContainer.addSubview(caffeineAmount)
+        
+        addSubview(textContainer)
+        textContainer.addSubview(leftBorder)
+        textContainer.addSubview(postCaption)
         
         let imageConstraints = [
             avatarView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
@@ -167,6 +197,26 @@ class PostCell: BasePostCell {
             caffeineAmount.bottomAnchor.constraint(equalTo: caffeineContainer.bottomAnchor)
         ]
         
+        let textContainerConstraints = [
+            textContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 35),
+            textContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
+            textContainer.topAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: 8),
+            textContainer.heightAnchor.constraint(equalToConstant: 40)
+        ]
+        
+        let leftBorderConstraints = [
+            leftBorder.leadingAnchor.constraint(equalTo: textContainer.leadingAnchor),
+            leftBorder.topAnchor.constraint(equalTo: textContainer.topAnchor),
+            leftBorder.bottomAnchor.constraint(equalTo: textContainer.bottomAnchor),
+            leftBorder.widthAnchor.constraint(equalToConstant: 4)
+        ]
+        
+        let postCaptionConstraints = [
+            postCaption.leadingAnchor.constraint(equalTo: leftBorder.trailingAnchor, constant: 32),
+            postCaption.trailingAnchor.constraint(equalTo: textContainer.trailingAnchor),
+            postCaption.topAnchor.constraint(equalTo: textContainer.topAnchor),
+            postCaption.bottomAnchor.constraint(equalTo: textContainer.bottomAnchor)
+        ]
         
         
         NSLayoutConstraint.activate(imageConstraints)
@@ -180,6 +230,10 @@ class PostCell: BasePostCell {
         NSLayoutConstraint.activate(caffeineConstraints)
         NSLayoutConstraint.activate(coffeeIconConstraints)
         NSLayoutConstraint.activate(caffeineAmountConstraints)
+        
+        NSLayoutConstraint.activate(textContainerConstraints)
+        NSLayoutConstraint.activate(leftBorderConstraints)
+        NSLayoutConstraint.activate(postCaptionConstraints)
     }
 }
 
@@ -211,3 +265,4 @@ class BasePostCell: UICollectionViewCell {
         backgroundColor = .blue
     }
 }
+

@@ -17,6 +17,7 @@ class CoffeeShopsTable: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "Coffee Shops"
         tableView.register(CoffeeShopCell.self, forCellReuseIdentifier: "coffeeShopCell")
+        tableView.separatorColor = .white
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,6 +28,8 @@ class CoffeeShopsTable: UITableViewController {
         let coffeeShop = coffeeShops[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "coffeeShopCell", for: indexPath) as! CoffeeShopCell
         loadFirstPhotoForPlace(placeID: coffeeShop.placeID, shop: coffeeShop, cell: cell)
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
         return cell
     }
     func loadFirstPhotoForPlace(placeID: String, shop: CoffeeShop, cell: CoffeeShopCell) {
