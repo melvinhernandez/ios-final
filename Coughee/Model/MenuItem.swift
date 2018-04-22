@@ -13,12 +13,14 @@ class MenuItem {
     var caffeine: Int
     var size: String
     var isHot: Bool
+    var type: String
     
-    init(name: String, caffeine: Int, size: String, isHot: Bool) {
+    init(name: String, caffeine: Int, size: String, isHot: Bool, type:String) {
         self.name = name
         self.caffeine = caffeine
         self.size = size
         self.isHot = isHot
+        self.type = type
     }
     
 }
