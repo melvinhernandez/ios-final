@@ -2,7 +2,7 @@
 //  CoffeeShop.swift
 //
 //
-//  Created by Melvin  Hernandez on 4/6/18.
+//  Created by Juan Cervantes on 4/6/18.
 //
 
 import Foundation

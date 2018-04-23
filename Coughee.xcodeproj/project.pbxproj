@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07302F6D208BDD0300C4A217 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07302F6C208BDD0300C4A217 /* MenuItem.swift */; };
+		07302F6F208D639200C4A217 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07302F6E208D639200C4A217 /* Post.swift */; };
 		5D45953D2CCAC5DC11C0DAE2 /* Pods_Coughee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4B9FBF799DA85288838660F /* Pods_Coughee.framework */; };
 		B00F4B6F207EC64B00FBAABC /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F4B6E207EC64B00FBAABC /* EntryController.swift */; };
 		B00F4B71207F3EFC00FBAABC /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F4B70207F3EFC00FBAABC /* MenuBar.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		07302F6C208BDD0300C4A217 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		07302F6E208D639200C4A217 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		3F6857DCFB7BDD0198B6509E /* Pods-Coughee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coughee.release.xcconfig"; path = "Pods/Target Support Files/Pods-Coughee/Pods-Coughee.release.xcconfig"; sourceTree = "<group>"; };
 		B00F4B6E207EC64B00FBAABC /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EntryController.swift; path = Coughee/View/EntryController.swift; sourceTree = SOURCE_ROOT; };
 		B00F4B70207F3EFC00FBAABC /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuBar.swift; path = "Coughee/New Group/Home/Coffee Shop View/MenuBar.swift"; sourceTree = SOURCE_ROOT; };
@@ -107,6 +109,7 @@
 				B03653D120785C07006019D3 /* CoffeeShop.swift */,
 				B0A8C5C62075FC910072FA2A /* Background.jpg */,
 				07302F6C208BDD0300C4A217 /* MenuItem.swift */,
+				07302F6E208D639200C4A217 /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				07302F6D208BDD0300C4A217 /* MenuItem.swift in Sources */,
 				B04636D920886A9A00E6E4E7 /* CreatePostViewController.swift in Sources */,
 				B05FF2F9207DC88E00360625 /* PostCell.swift in Sources */,
+				07302F6F208D639200C4A217 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

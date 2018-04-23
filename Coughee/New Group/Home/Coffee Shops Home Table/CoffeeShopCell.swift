@@ -72,9 +72,6 @@ class CoffeeShopCell: BaseCell {
             descriptionText.heightAnchor.constraint(equalToConstant: 20),
             descriptionText.topAnchor.constraint(equalTo: titleText.bottomAnchor, constant: 10)
             ])
-    
-        
-        
     }
     
 }
