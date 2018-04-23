@@ -18,10 +18,13 @@ class CoffeeShop {
     var address: String?
     var phone: String?
     var hours: [String] = [String]()
+    var rating: Double?
+    var website: String?
     
     init(placeID: String) {
         self.placeID = placeID
         fetchattr(placeID: placeID)
+        moreInfo(placeID: placeID)
     }
     
     static let coffeeShopData = [
@@ -32,7 +35,36 @@ class CoffeeShop {
         CoffeeShop(placeID: "ChIJbbVx8Sd8hYARG-HGSJWzlRw"),
         CoffeeShop(placeID: "ChIJiWTUXC98hYARrmlNLX89GbI")
     ]
-    
+    func moreInfo(placeID: String) {
+        let url_str = "https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyC7G9bC4TpcM9O_L1_O7eFNnuti1Qu23iI&placeid=" + placeID
+        let url = URL(string: url_str)
+        let session = URLSession.shared
+        let task = session.dataTask(with: url!,
+                                    completionHandler: {
+                                        (data, response, error) -> Void in
+                                        if error == nil {
+                                            let data: Data = data!
+                                            let json = try? JSONSerialization.jsonObject(with:
+                                                data, options: [])
+                                            if let dictionary = json as? [String: Any] {
+                                                if let result = dictionary["result"] as?  [String: Any] {
+                                                    if let one_level = result["opening_hours"] as? [String: Any] {
+                                                        if let hours = one_level["weekday_text"] as? [String] {
+                                                            self.hours = hours
+                                                        }
+                                                    }
+                                                    if let rating = result["rating"] as! Double? {
+                                                        self.rating = rating                                                    }
+                                                    if let website = result["website"] as! String? {
+                                                        self.website = website
+                                                    }
+                                                }
+                                            }
+                                        }
+        })
+        
+        task.resume()
+    }
     func fetchattr(placeID: String) {
         let placesClient = GMSPlacesClient()
         placesClient.lookUpPlaceID(placeID, callback: { (place, error) -> Void in
