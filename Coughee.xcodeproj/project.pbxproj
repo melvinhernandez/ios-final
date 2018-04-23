@@ -27,6 +27,7 @@
 		B0579932207D96A600A6EF5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B03CEA422075BA2E00601248 /* Assets.xcassets */; };
 		B05FF2F7207DC7E200360625 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FF2F6207DC7E200360625 /* FeedViewController.swift */; };
 		B05FF2F9207DC88E00360625 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FF2F8207DC88E00360625 /* PostCell.swift */; };
+		B089E2E1208D3B83007396AB /* CoffeeShopMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089E2E0208D3B83007396AB /* CoffeeShopMenuView.swift */; };
 		B0A8C5C32075F7650072FA2A /* OverridenLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8C5C22075F7650072FA2A /* OverridenLoginViewController.swift */; };
 		B0A8C5C52075F7B50072FA2A /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8C5C42075F7B50072FA2A /* LoginCoordinator.swift */; };
 		B0A8C5C72075FC910072FA2A /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0A8C5C62075FC910072FA2A /* Background.jpg */; };
@@ -55,6 +56,7 @@
 		B057992E207D7BE200A6EF5C /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTabBarController.swift; path = "Coughee/New Group/CustomTabBarController.swift"; sourceTree = SOURCE_ROOT; };
 		B05FF2F6207DC7E200360625 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		B05FF2F8207DC88E00360625 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostCell.swift; path = "Coughee/New Group/Feed/PostCell.swift"; sourceTree = SOURCE_ROOT; };
+		B089E2E0208D3B83007396AB /* CoffeeShopMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopMenuView.swift; sourceTree = "<group>"; };
 		B0A8C5C22075F7650072FA2A /* OverridenLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverridenLoginViewController.swift; sourceTree = "<group>"; };
 		B0A8C5C42075F7B50072FA2A /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		B0A8C5C62075FC910072FA2A /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Background.jpg; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				B04636D2208869C400E6E4E7 /* CoffeeShopViewController.swift */,
 				B00F4B77207F59EA00FBAABC /* CoffeeShopContent.swift */,
+				B089E2E0208D3B83007396AB /* CoffeeShopMenuView.swift */,
 				B00F4B70207F3EFC00FBAABC /* MenuBar.swift */,
 			);
 			path = "Coffee Shop View";
@@ -389,6 +392,7 @@
 				B04636CB20882DE900E6E4E7 /* UserViewController.swift in Sources */,
 				B057992F207D7BE200A6EF5C /* CustomTabBarController.swift in Sources */,
 				B03CEA3C2075BA2E00601248 /* AppDelegate.swift in Sources */,
+				B089E2E1208D3B83007396AB /* CoffeeShopMenuView.swift in Sources */,
 				B04636D4208869C400E6E4E7 /* CoffeeShopViewController.swift in Sources */,
 				B00F4B71207F3EFC00FBAABC /* MenuBar.swift in Sources */,
 				B05FF2F7207DC7E200360625 /* FeedViewController.swift in Sources */,

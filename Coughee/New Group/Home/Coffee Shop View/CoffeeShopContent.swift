@@ -12,6 +12,8 @@ class CoffeeShopContent: UIView, UICollectionViewDataSource, UICollectionViewDel
     
     let contentStuff = ["Coffee Shop", "Posts"]
     let cellId = "coffeeShopContent"
+    let cellMenuItemId = "menuItemCell"
+    var coffeeShop: CoffeeShop?
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -40,6 +42,7 @@ class CoffeeShopContent: UIView, UICollectionViewDataSource, UICollectionViewDel
     
     func setupCollectionView() {
         collectionView.register(ContentCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(CoffeeShopMenuView.self, forCellWithReuseIdentifier: cellMenuItemId)
         addSubview(collectionView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
@@ -75,10 +78,16 @@ class CoffeeShopContent: UIView, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ContentCell
-        cell.stuffTitle.text = contentStuff[indexPath.item]
-        cell.backgroundColor = .white
-        return cell
+        if indexPath.item == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ContentCell
+            cell.stuffTitle.text = contentStuff[indexPath.item]
+            cell.backgroundColor = .white
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellMenuItemId, for: indexPath) as! CoffeeShopMenuView
+            cell.menu = CoffeeShop.coffeeShopMenus[(self.coffeeShop?.placeID)!]!
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

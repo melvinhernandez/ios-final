@@ -17,7 +17,7 @@ class CoffeeShop {
     var long: Double?
     var address: String?
     var phone: String?
-    var hours: [String]
+    var hours: [String] = [String]()
     
     init(placeID: String) {
         self.placeID = placeID

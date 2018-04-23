@@ -105,7 +105,7 @@ class PostCell: BasePostCell {
         let caption = UILabel()
         caption.font = UIFont.systemFont(ofSize: 14)
         caption.textColor = Colors.darkGray
-        caption.text = "Howdy! I just had coffee with my boi Kanye. New album soon 😄"
+        caption.text = "Iced Americano"
         caption.lineBreakMode = .byWordWrapping
         caption.numberOfLines = 2
         caption.translatesAutoresizingMaskIntoConstraints = false

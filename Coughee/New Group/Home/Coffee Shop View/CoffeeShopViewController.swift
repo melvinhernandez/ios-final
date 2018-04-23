@@ -67,6 +67,7 @@ class CoffeeShopViewController: UIViewController {
     }
     
     func setupContent() {
+        bottomContainer.coffeeShop = self.coffeeShop
         self.view.addSubview(bottomContainer)
         bottomContainer.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
