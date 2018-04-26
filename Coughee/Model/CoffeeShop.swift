@@ -28,12 +28,36 @@ class CoffeeShop {
     }
     
     static let coffeeShopData = [
-        CoffeeShop(placeID: "ChIJ60w1qN9-hYARtzxtM7Qwdw4"),
+        //NOT GENERIC MENUS
+        CoffeeShop(placeID: "ChIJ60w1qN9-hYARtzxtM7Qwdw4"), //FSM
         CoffeeShop(placeID: "ChIJJe5a5i98hYARKF0NeaK-9kM"),
         CoffeeShop(placeID: "ChIJS4sDZp5-hYARIW-0A3ZOoqM"),
         CoffeeShop(placeID: "ChIJRzpkY55-hYARqFXlH-j8hSg"),
         CoffeeShop(placeID: "ChIJbbVx8Sd8hYARG-HGSJWzlRw"),
-        CoffeeShop(placeID: "ChIJiWTUXC98hYARrmlNLX89GbI")
+        CoffeeShop(placeID: "ChIJiWTUXC98hYARrmlNLX89GbI"),
+        //GENERRIC MENUS
+        CoffeeShop(placeID: "ChIJxRGX8p1-hYARBrkP22qWlKg"), //Starbucks
+        CoffeeShop(placeID: "ChIJ0acevi58hYARWbsFtrpCPHI"), //Romeos Cafe
+        CoffeeShop(placeID: "ChIJn-29E8V9hYARmAezYfXpKBo"), //Philz
+        CoffeeShop(placeID: "ChIJS4KrsCh8hYARFrqy1pEUSeg"), //Sodol Coffee Tasting House
+        CoffeeShop(placeID: "ChIJ--NzyyV8hYARe3Tq719Z_P0"), //Babette South Hall Coffee Bar
+        CoffeeShop(placeID: "ChIJX9GbpDJ8hYARzIu23Ssq8cg"), //Sack's Coffee House
+        CoffeeShop(placeID: "ChIJY2RivS58hYARUDQo9IrHJx0"), //Peets Coffee
+        CoffeeShop(placeID: "ChIJg0TY5SR8hYARbxbNBfOi9SA"), //The Coffee Lab
+        CoffeeShop(placeID: "ChIJvxp408F-hYAReY3LjPTySLI"), //Algorithm Coffee Co.
+        CoffeeShop(placeID: "ChIJze0rc9R9hYARffVXzhCeOAU"), //Allegro Coffee Co.
+        CoffeeShop(placeID: "ChIJ_x_MjyF8hYARwSGsrL7Qwic"), //Brewed Awakening
+        CoffeeShop(placeID: "ChIJq0N1G5x-hYAROQV3bj4cTTk"), //K's Coffee Shop
+        CoffeeShop(placeID: "ChIJL0EVdup-hYARU-kkP-9o98c"), //HighWire Coffee Roasters
+        CoffeeShop(placeID: "ChIJJ5MtD59-hYARB9wKo5dZPwQ"), //Berkeley Espresso
+        CoffeeShop(placeID: "ChIJW2yuxCh8hYARGGQHIaJzsZc"), //1951 Coffee Shop
+        CoffeeShop(placeID: "ChIJdwOuqn5-hYARj0bLYaWu8Zk"), //Rasa Caffee
+        CoffeeShop(placeID: "ChIJCeoIuHt-hYAR0OZUwj2Gqxk"), //Alchemy Collective Cafe and Roaster
+        CoffeeShop(placeID: "ChIJG1xfM899hYARfrx1-OhOLQM"), //Souvenir Coffee
+        CoffeeShop(placeID: "ChIJSTgrYYJ-hYARI-qF_8z6T4Y"), //Way Station Brew
+        CoffeeShop(placeID: "ChIJc4U-eZ9-hYAR5ih4d-bZpBI"), //Victory Point Cafe
+        CoffeeShop(placeID: "ChIJAQ29ep9-hYARjBvpiTPVXVM")  //Fertile Grounds
+
     ]
     func moreInfo(placeID: String) {
         let url_str = "https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyC7G9bC4TpcM9O_L1_O7eFNnuti1Qu23iI&placeid=" + placeID
@@ -95,6 +119,33 @@ class CoffeeShop {
             }
         })
     }
+    static let genericMenu = [
+        MenuItem(name: "House Coffee", caffeine: 91, size: "small", isHot: true, type: "coffee"),
+        MenuItem(name: "House Coffee", caffeine: 190, size: "large", isHot: true, type: "coffee"),
+        MenuItem(name: "Espresso", caffeine: 64, size: "small", isHot: true, type: "espresso"),
+        MenuItem(name: "Espresso", caffeine: 128, size: "large", isHot: true, type: "espresso"),
+        MenuItem(name: "Cappuccino", caffeine: 77, size: "small", isHot: true, type: "cappuccino"),
+        MenuItem(name: "Cappuccino", caffeine: 154, size: "large", isHot: true, type: "cappuccino"),
+        MenuItem(name: "Caramel Latte", caffeine: 140, size: "large", isHot: true, type: "latte"),
+        MenuItem(name: "Latte", caffeine: 140, size: "large", isHot: true, type: "latte"),
+        MenuItem(name: "Latte", caffeine: 210, size: "extra-large", isHot: true, type: "latte"),
+        MenuItem(name: "Au Lait", caffeine: 64, size: "small", isHot: true, type: "latte"),
+        MenuItem(name: "Au Lait", caffeine: 140, size: "large", isHot: true, type: "latte"),
+        MenuItem(name: "Chai Latte", caffeine: 70, size: "small", isHot: true, type: "latte"),
+        MenuItem(name: "Chai Latte", caffeine: 154, size: "large", isHot: true, type: "latte"),
+        MenuItem(name: "Dirty Chai", caffeine: 160, size: "large", isHot: true, type: "latte"),
+        MenuItem(name: "Mocha", caffeine: 85, size: "small", isHot: true, type: "mocha"),
+        MenuItem(name: "Mocha", caffeine: 165, size: "large", isHot: true, type: "mocha"),
+        MenuItem(name: "White Mocha", caffeine: 90, size: "small", isHot: true, type: "mocha"),
+        MenuItem(name: "White Mocha", caffeine: 170, size: "large", isHot: true, type: "mocha"),
+        MenuItem(name: "Hot Chocolate", caffeine: 5, size: "small", isHot: true, type: "hotchoco"),
+        MenuItem(name: "Hot Chocolate", caffeine: 12, size: "large", isHot: true, type: "hotchoco"),
+        MenuItem(name: "Organic Hot Tea", caffeine: 26, size: "small", isHot: true, type: "tea"),
+        MenuItem(name: "Organic Hot Tea", caffeine: 52, size: "small", isHot: true, type: "tea"),
+        MenuItem(name: "Dirty Chai", caffeine: 80, size: "small", isHot: true, type: "specialty"),
+        MenuItem(name: "Dirty Chai", caffeine: 120, size: "medium", isHot: true, type: "specialty"),
+        MenuItem(name: "Dirty Chai", caffeine: 160, size: "large", isHot: true, type: "specialty")
+    ]
     static let coffeeShopMenus = [
         "ChIJ60w1qN9-hYARtzxtM7Qwdw4": [
                                         MenuItem(name: "House Coffee", caffeine: 91, size: "small", isHot: true, type: "coffee"),
@@ -274,7 +325,29 @@ class CoffeeShop {
                                         MenuItem(name: "Chai Latte", caffeine: 154, size: "large", isHot: true, type: "latte"),
                                         MenuItem(name: "Mocha Glacier", caffeine: 70, size:"medium", isHot: false, type: "colddrink"),
                                         MenuItem(name: "Mocha Glacier", caffeine: 130, size:"large", isHot: false, type: "colddrink"),
-                                    ]
+                                    ],
+        "ChIJxRGX8p1-hYARBrkP22qWlKg": genericMenu,
+        "ChIJ0acevi58hYARWbsFtrpCPHI": genericMenu,
+        "ChIJn-29E8V9hYARmAezYfXpKBo": genericMenu,
+        "ChIJS4KrsCh8hYARFrqy1pEUSeg": genericMenu,
+        "ChIJ--NzyyV8hYARe3Tq719Z_P0": genericMenu,
+        "ChIJX9GbpDJ8hYARzIu23Ssq8cg": genericMenu,
+        "ChIJY2RivS58hYARUDQo9IrHJx0": genericMenu,
+        "ChIJg0TY5SR8hYARbxbNBfOi9SA": genericMenu,
+        "ChIJvxp408F-hYAReY3LjPTySLI": genericMenu,
+        "ChIJze0rc9R9hYARffVXzhCeOAU": genericMenu,
+        "ChIJ_x_MjyF8hYARwSGsrL7Qwic": genericMenu,
+        "ChIJq0N1G5x-hYAROQV3bj4cTTk": genericMenu,
+        "ChIJL0EVdup-hYARU-kkP-9o98c": genericMenu,
+        "ChIJJ5MtD59-hYARB9wKo5dZPwQ": genericMenu,
+        "ChIJW2yuxCh8hYARGGQHIaJzsZc": genericMenu,
+        "ChIJdwOuqn5-hYARj0bLYaWu8Zk": genericMenu,
+        "ChIJCeoIuHt-hYAR0OZUwj2Gqxk": genericMenu,
+        "ChIJG1xfM899hYARfrx1-OhOLQM": genericMenu,
+        "ChIJSTgrYYJ-hYARI-qF_8z6T4Y": genericMenu,
+        "ChIJc4U-eZ9-hYAR5ih4d-bZpBI": genericMenu,
+        "ChIJAQ29ep9-hYARjBvpiTPVXVM": genericMenu
     ]
+
 }
 
