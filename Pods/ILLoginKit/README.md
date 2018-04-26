@@ -46,7 +46,7 @@ pod "ILLoginKit"
 
 ### Login Coordinator
 
-Everything is handled through the **LoginCoordinator** class. You insantiate it and pass the root view controller which is the UIViewController from which the LoginKit process will be started (presented) on. This will usually be self.
+Everything is handled through the **LoginCoordinator** class. You instantiate it and pass the root view controller which is the UIViewController from which the LoginKit process will be started (presented) on. This will usually be self.
 
 ```swift
 import LoginKit
@@ -97,11 +97,12 @@ override func start(animated: Bool = true) {
 
 ### Configuration
 
-You can set any of these properties on the superclass to change the way LoginKit looks. Besides the images, all other properties have defaults, no need to set them if you don't need them.
+You can set any of these properties on the `configuration` property of the superclass to change the way LoginKit looks. Besides the images, all other properties have defaults, no need to set them if you don't need them.
 
 | Property  |  Effect      |
 |----------|:-------------:|
 | backgroundImage |  The background image that will be used in all ViewController's.  | 
+| backgroundImageGradient |  Set to false to remove the gradient from the background image. (Default is true)  | 
 | mainLogoImage |  A logo image that will be used in the initial ViewController.  | 
 | secondaryLogoImage |  A smaller logo image that will be used on all ViewController's except the initial one.  | 
 | tintColor |  The tint color for the button text and background color.  | 
@@ -115,30 +116,52 @@ You can set any of these properties on the superclass to change the way LoginKit
 | emailPlaceholder |  The placeholder that will be used in the email text field.  | 
 | passwordPlaceholder |  The placeholder that will be used in the password text field.  | 
 | repeatPasswordPlaceholder |  The placeholder that will be used in the repeat password text field.  | 
+| shouldShowSignupButton |  To hide the signup button set to false. (Default is true)  |
+| shouldShowLoginButton |  To hide the login button set to false. (Default is true)  |
+| shouldShowFacebookButton |  To hide the Facebook button set to false. (Default is true)  |
+| shouldShowForgotPassword |  To hide the forgot password button set to false. (Default is true)  |
 
 ```swift
 // Customize LoginKit. All properties have defaults, only set the ones you want.
 func configureAppearance() {
     // Customize the look with background & logo images
-    backgroundImage = 
-    mainLogoImage =
-    secondaryLogoImage =
+    configuration.backgroundImage = 
+    configuration.mainLogoImage =
+    configuration.secondaryLogoImage =
 
     // Change colors
-    tintColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1)
-    errorTintColor = UIColor(red: 253.0/255.0, green: 227.0/255.0, blue: 167.0/255.0, alpha: 1)
+    configuration.tintColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1)
+    configuration.errorTintColor = UIColor(red: 253.0/255.0, green: 227.0/255.0, blue: 167.0/255.0, alpha: 1)
 
     // Change placeholder & button texts, useful for different marketing style or language.
-    loginButtonText = "Sign In"
-    signupButtonText = "Create Account"
-    facebookButtonText = "Login with Facebook"
-    forgotPasswordButtonText = "Forgot password?"
-    recoverPasswordButtonText = "Recover"
-    namePlaceholder = "Name"
-    emailPlaceholder = "E-Mail"
-    passwordPlaceholder = "Password!"
-    repeatPasswordPlaceholder = "Confirm password!"
+    configuration.loginButtonText = "Sign In"
+    configuration.signupButtonText = "Create Account"
+    configuration.facebookButtonText = "Login with Facebook"
+    configuration.forgotPasswordButtonText = "Forgot password?"
+    configuration.recoverPasswordButtonText = "Recover"
+    configuration.namePlaceholder = "Name"
+    configuration.emailPlaceholder = "E-Mail"
+    configuration.passwordPlaceholder = "Password!"
+    configuration.repeatPasswordPlaceholder = "Confirm password!"
 }
+```
+
+You can also create your own type that conforms to the `ConfigurationSource` protocol, or use the `DefaultConfiguration` struct. Then just set it on the configuration object like so.
+
+```swift
+configuration = DefaultConfiguration(backgroundImage: signupButtonText: "Create Account",
+					 loginButtonText: "Sign In",
+					 facebookButtonText: "Login with Facebook",
+					 forgotPasswordButtonText: "Forgot password?",
+					 recoverPasswordButtonText: "Recover",
+					 emailPlaceholder: "E-Mail",
+					 passwordPlaceholder: "Password!",
+					 repeatPasswordPlaceholder: "Confirm password!",
+					 namePlaceholder: "Name",
+					 shouldShowSignupButton: false,
+					 shouldShowLoginButton: true,
+					 shouldShowFacebookButton: false,
+					 shouldShowForgotPassword: true)x
 ```
 
 ### Completion Callbacks
@@ -205,24 +228,24 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
     // Customize LoginKit. All properties have defaults, only set the ones you want.
     func configureAppearance() {
         // Customize the look with background & logo images
-        backgroundImage = #imageLiteral(resourceName: "Background")
+        configuration.backgroundImage = #imageLiteral(resourceName: "Background")
         // mainLogoImage =
         // secondaryLogoImage =
 
         // Change colors
-        tintColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1)
-        errorTintColor = UIColor(red: 253.0/255.0, green: 227.0/255.0, blue: 167.0/255.0, alpha: 1)
+        configuration.tintColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1)
+        configuration.errorTintColor = UIColor(red: 253.0/255.0, green: 227.0/255.0, blue: 167.0/255.0, alpha: 1)
 
         // Change placeholder & button texts, useful for different marketing style or language.
-        loginButtonText = "Sign In"
-        signupButtonText = "Create Account"
-        facebookButtonText = "Login with Facebook"
-        forgotPasswordButtonText = "Forgot password?"
-        recoverPasswordButtonText = "Recover"
-        namePlaceholder = "Name"
-        emailPlaceholder = "E-Mail"
-        passwordPlaceholder = "Password!"
-        repeatPasswordPlaceholder = "Confirm password!"
+        configuration.loginButtonText = "Sign In"
+        configuration.signupButtonText = "Create Account"
+        configuration.facebookButtonText = "Login with Facebook"
+        configuration.forgotPasswordButtonText = "Forgot password?"
+        configuration.recoverPasswordButtonText = "Recover"
+        configuration.namePlaceholder = "Name"
+        configuration.emailPlaceholder = "E-Mail"
+        configuration.passwordPlaceholder = "Password!"
+        configuration.repeatPasswordPlaceholder = "Confirm password!"
     }
 
     // MARK: - Completion Callbacks
@@ -249,6 +272,29 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
 
 }
 ```
+
+### Using the ViewController's without the LoginCoordinator
+
+If you only need to use the `LoginViewController` or `SignupViewController` or `PasswordViewController` on it's own, without using the LoginCoordinator, now you can.
+
+Just subclass any of them, and set configuration property in the `viewDidLoad()` method before calling `super.viewDidLoad()`.
+
+```swift
+class OverridenLoginViewController: LoginViewController {
+
+    override func viewDidLoad() {
+	configuration = Settings.defaultLoginConfig // configure before calling super
+	super.viewDidLoad()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+}
+```
+
+Then just present the ViewController, and set the `delegate` property to receive the appropiate callbacks for that controller.
 
 ## Author
 

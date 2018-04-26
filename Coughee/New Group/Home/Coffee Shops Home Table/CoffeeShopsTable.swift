@@ -56,7 +56,11 @@ class CoffeeShopsTable: UITableViewController {
                     shop.image = photo
                     cell.backgroundImageView.image = photo
                     cell.titleText.text = shop.name
-                    cell.descriptionText.text = shop.open! ? "Closed" : "Open"
+                    if let open = shop.open {
+                        cell.descriptionText.text = open ? "Open" : "Closed"
+                    } else {
+                        cell.descriptionText.text = "Loading..."
+                    }
                 }
             }
         })

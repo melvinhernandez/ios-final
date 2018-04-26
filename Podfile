@@ -20,5 +20,5 @@ target 'Coughee' do
   # Pod for fontawesome icons
   pod 'FontAwesome.swift' 
   # Pod for forms
-  pod 'Eureka'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
 end
