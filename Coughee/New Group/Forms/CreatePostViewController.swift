@@ -6,12 +6,17 @@
 //  Copyright © 2018 UC Berkeley. All rights reserved.
 //
 
+import TransitionButton
 import UIKit
 import SkyFloatingLabelTextField
+import FirebaseDatabase
 
 class CreatePostViewController: UIViewController, UITextFieldDelegate {
     
     var menuItem: MenuItem?
+    var coffeeShop: CoffeeShop?
+    
+    let currentUser = CurrentUser()
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -132,10 +137,19 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         return textField1
     }()
     
-    let createPostBtn: UIButton = {
-        let button = UIButton(type: .system) // let preferred over var here
-        button.setTitle("Create", for: [])
-        button.addTarget(self, action: #selector(handleCreatePost), for: UIControlEvents.touchUpInside)
+    let button: TransitionButton = {
+        let button = TransitionButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let dismissButton: TransitionButton = {
+        let button = TransitionButton()
+        button.backgroundColor = Colors.lightGray
+        button.setTitle("Cancel", for: .normal)
+        button.cornerRadius = 20
+        button.spinnerColor = .white
+        button.addTarget(self, action: #selector(dismissForm), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -147,7 +161,104 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         view.backgroundColor = .white
         setupViews()
         formSetup()
+        setupButton()
+        setupDismissButton()
     }
+    
+    func setupButton() {
+        button.backgroundColor = Colors.coral
+        button.setTitle("Brew Post", for: .normal)
+        button.cornerRadius = 20
+        button.spinnerColor = .white
+        button.disabledBackgroundColor = Colors.gray
+        button.addTarget(self, action: #selector(handleFormSubmit), for: .touchUpInside)
+        button.isEnabled = false
+        
+        view.addSubview(button)
+        
+        let buttonConstraints = [
+            button.topAnchor.constraint(equalTo: formContainer.bottomAnchor, constant: 24),
+            button.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
+            button.heightAnchor.constraint(equalToConstant: 40),
+            button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(buttonConstraints)
+    }
+    
+    func setupDismissButton() {
+        view.addSubview(dismissButton)
+        
+        let buttonConstraints = [
+            dismissButton.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 18),
+            dismissButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
+            dismissButton.heightAnchor.constraint(equalToConstant: 40),
+            dismissButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(buttonConstraints)
+    }
+    
+    @objc func handleFormSubmit() {
+        button.startAnimation()
+        dismissButton.isHidden = true
+        if let text = inputField.text {
+            if text.count > 0 && text.count <= 60 {
+                let timeOfPost = Date()
+                let coffeeShopName = coffeeShop?.name!
+                let newPost = Post(username: currentUser.username, item: (menuItem?.name)!, shop: coffeeShopName!, caffeine: (menuItem?.caffeine)!, caption: text, date: timeOfPost)
+                sendPost(post: newPost)
+            } else {
+                print("what??")
+            }
+        }
+    }
+    
+    @objc func dismissForm() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // Firebase Logic
+    // Makes the request to Firebase
+    func sendPost(post: Post) {
+        let dbRef = Database.database().reference()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.A"
+        let dateString = dateFormatter.string(from: post.date)
+        
+        let postDict: [String:AnyObject] = [
+                                            "username": post.username as AnyObject,
+                                            "menuItem": post.item as AnyObject,
+                                            "coffeeShop": post.shop as AnyObject,
+                                            "caffeine": post.caffeine as AnyObject,
+                                            "caption": post.caption as AnyObject,
+                                            "date": dateString as AnyObject]
+        
+        let newPostRef = dbRef.child("Posts").childByAutoId()
+        newPostRef.setValue(postDict) { (err, ref) -> Void in
+            if (err != nil) {
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.button.stopAnimation(animationStyle: .shake, completion: {
+                        self.inputField.errorMessage = err?.localizedDescription
+                    })
+                })
+            } else {
+                DispatchQueue.main.async(execute: { () -> Void in
+                    // 4: Stop the animation, here you have three options for the `animationStyle` property:
+                    // .expand: useful when the task has been compeletd successfully and you want to expand the button and transit to another view controller in the completion callback
+                    // .shake: when you want to reflect to the user that the task did not complete successfly
+                    // .normal
+                    self.button.stopAnimation(animationStyle: .expand, completion: {
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                })
+            }
+        }
+        currentUser.addNewPost(postID: newPostRef.description())
+    }
+    
+    // Views Logic
     
     func setupViews() {
         view.addSubview(titleLabel)
@@ -297,18 +408,17 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 if (text.count == 0) {
                     floatingLabelTextField.title = "Caption (\(text.count)/60)"
                     floatingLabelTextField.errorMessage = ""
+                    button.isEnabled = false
                 } else if(text.count <= 60) {
                     floatingLabelTextField.title = "Caption (\(text.count)/60)"
                     floatingLabelTextField.errorMessage = ""
+                    button.isEnabled = true
                 } else {
                     // The error message will only disappear when we reset it to nil or empty string
                     floatingLabelTextField.errorMessage = "Max Characters is 60."
+                    button.isEnabled = false
                 }
             }
         }
-    }
-    
-    @objc func handleCreatePost() {
-        self.dismiss(animated: true, completion: nil)
     }
 }

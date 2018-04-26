@@ -93,6 +93,7 @@ extension CoffeeShopViewController: NewPostDelegate {
     func showNewPostModal(menuItem: MenuItem) {
         let createNewPost = CreatePostViewController()
         createNewPost.menuItem = menuItem
+        createNewPost.coffeeShop = self.coffeeShop
         self.present(createNewPost, animated: true, completion: nil)
     }
 }

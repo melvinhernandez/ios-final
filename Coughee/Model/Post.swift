@@ -9,15 +9,15 @@
 import Foundation
 
 class Post {
-    var name: String
+    var username: String
     var item: String
     var shop: String
-    var caffeine: String
+    var caffeine: Int
     var caption: String
     var date: Date
     
-    init(name: String, item: String, shop: String, caffeine: String, caption: String, date:Date) {
-        self.name = name
+    init(username: String, item: String, shop: String, caffeine: Int, caption: String, date:Date) {
+        self.username = username
         self.item = item
         self.shop = shop
         self.caffeine = caffeine

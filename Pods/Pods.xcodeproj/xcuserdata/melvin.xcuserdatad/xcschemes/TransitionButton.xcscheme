@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F6529F4E20E065FECE80476FB395997E"
-               BlueprintName = "SkyFloatingLabelTextField"
+               BlueprintIdentifier = "BBD1212395B4FF95413F0160C7B74D2A"
+               BlueprintName = "TransitionButton"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "SkyFloatingLabelTextField.framework">
+               BuildableName = "TransitionButton.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

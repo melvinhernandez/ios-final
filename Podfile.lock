@@ -65,6 +65,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - SkyFloatingLabelTextField (3.4.1)
+  - TransitionButton (0.4.0)
   - Validator (3.0.2)
 
 DEPENDENCIES:
@@ -78,6 +79,7 @@ DEPENDENCIES:
   - GooglePlaces
   - ILLoginKit
   - SkyFloatingLabelTextField (~> 3.0)
+  - TransitionButton
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -101,6 +103,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - SkyFloatingLabelTextField
+    - TransitionButton
     - Validator
 
 SPEC CHECKSUMS:
@@ -124,8 +127,9 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SkyFloatingLabelTextField: 8085f20f57f74a00cfcae58099299faa1a971035
+  TransitionButton: d271030914c84a00b54b4d983446944d2875e7ba
   Validator: bf211c1d71b3f910d230c09c70e62429d0fef63a
 
-PODFILE CHECKSUM: fd39a0a788db6c8aa5b151d2c5013421dc2abbb6
+PODFILE CHECKSUM: 8e0c827225dbe485cf0151b4a0dae9bdfdc98af0
 
 COCOAPODS: 1.5.0

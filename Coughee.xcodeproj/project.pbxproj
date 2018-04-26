@@ -32,6 +32,7 @@
 		B0A8C5C32075F7650072FA2A /* OverridenLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8C5C22075F7650072FA2A /* OverridenLoginViewController.swift */; };
 		B0A8C5C52075F7B50072FA2A /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8C5C42075F7B50072FA2A /* LoginCoordinator.swift */; };
 		B0A8C5C72075FC910072FA2A /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0A8C5C62075FC910072FA2A /* Background.jpg */; };
+		B0C8B62D20927FD300F8B815 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8B62C20927FD300F8B815 /* CurrentUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		B0A8C5C22075F7650072FA2A /* OverridenLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverridenLoginViewController.swift; sourceTree = "<group>"; };
 		B0A8C5C42075F7B50072FA2A /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		B0A8C5C62075FC910072FA2A /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Background.jpg; sourceTree = "<group>"; };
+		B0C8B62C20927FD300F8B815 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		C4B9FBF799DA85288838660F /* Pods_Coughee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coughee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F5C7F61916E01208C6A3FB /* Pods-Coughee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coughee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Coughee/Pods-Coughee.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +112,7 @@
 				B0A8C5C62075FC910072FA2A /* Background.jpg */,
 				07302F6C208BDD0300C4A217 /* MenuItem.swift */,
 				07302F6E208D639200C4A217 /* Post.swift */,
+				B0C8B62C20927FD300F8B815 /* CurrentUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/ILLoginKit/ILLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
 				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -335,6 +339,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ILLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -410,6 +415,7 @@
 				07302F6D208BDD0300C4A217 /* MenuItem.swift in Sources */,
 				B04636D920886A9A00E6E4E7 /* CreatePostViewController.swift in Sources */,
 				B05FF2F9207DC88E00360625 /* PostCell.swift in Sources */,
+				B0C8B62D20927FD300F8B815 /* CurrentUser.swift in Sources */,
 				07302F6F208D639200C4A217 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

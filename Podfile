@@ -21,4 +21,5 @@ target 'Coughee' do
   pod 'FontAwesome.swift' 
   # Pod for forms
   pod 'SkyFloatingLabelTextField', '~> 3.0'
+  pod 'TransitionButton'
 end
