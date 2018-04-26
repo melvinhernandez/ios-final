@@ -12,7 +12,7 @@ import GooglePlaces
 class CoffeeShopsTable: UITableViewController {
     
     let coffeeShops = CoffeeShop.coffeeShopData
-
+    var cachedPhotos = [String: CoffeeShop]()
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Coffee Shops"
@@ -26,6 +26,7 @@ class CoffeeShopsTable: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let coffeeShop = coffeeShops[indexPath.row]
+        cachedPhotos[coffeeShop.placeID] = coffeeShop
         let cell = tableView.dequeueReusableCell(withIdentifier: "coffeeShopCell", for: indexPath) as! CoffeeShopCell
         loadFirstPhotoForPlace(placeID: coffeeShop.placeID, shop: coffeeShop, cell: cell)
         cell.separatorInset = UIEdgeInsets.zero
@@ -38,6 +39,13 @@ class CoffeeShopsTable: UITableViewController {
                 // TODO: handle the error.
                 print("Error: \(error.localizedDescription)")
             } else {
+                if let cachedShop = self.cachedPhotos[placeID] {
+                    DispatchQueue.main.async {
+                        cell.backgroundImageView.image = cachedShop.image
+                        cell.titleText.text = cachedShop.name
+                        cell.descriptionText.text = cachedShop.open! ? "Closed" : "Open"
+                    }
+                }
                 if let firstPhoto = photos?.results.first {
                     self.loadImageForMetadata(photoMetadata: firstPhoto, shop: shop, cell: cell)
                 }
