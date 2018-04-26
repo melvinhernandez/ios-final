@@ -163,6 +163,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         formSetup()
         setupButton()
         setupDismissButton()
+        setupText()
     }
     
     func setupButton() {
@@ -245,10 +246,6 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 })
             } else {
                 DispatchQueue.main.async(execute: { () -> Void in
-                    // 4: Stop the animation, here you have three options for the `animationStyle` property:
-                    // .expand: useful when the task has been compeletd successfully and you want to expand the button and transit to another view controller in the completion callback
-                    // .shake: when you want to reflect to the user that the task did not complete successfly
-                    // .normal
                     self.button.stopAnimation(animationStyle: .expand, completion: {
                         self.dismiss(animated: true, completion: nil)
                     })
@@ -260,11 +257,19 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
     
     // Views Logic
     
+    func setupText() {
+        itemName.text = menuItem?.name
+        coffeeShopLabel.text = coffeeShop?.name
+        caffeineAmount.text = "\((menuItem?.caffeine)!) mgs"
+        itemImage.image = UIImage(named: (menuItem?.type)!)
+    }
+    
     func setupViews() {
         view.addSubview(titleLabel)
         view.addSubview(itemImage)
         view.addSubview(itemName)
         view.addSubview(formContainer)
+        
         
         let titleConstraints = [
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),

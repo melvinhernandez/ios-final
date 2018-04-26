@@ -29,19 +29,8 @@ class CoffeeShopViewController: UIViewController {
         if let shop = self.coffeeShop {
             navigationItem.title = shop.name
         }
-        
-        setupCreatePostButton()
         setupMap()
         setupContent()
-    }
-    
-    func setupCreatePostButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "new", style: .done, target: self, action: #selector(createNewPost))
-        let attributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): UIFont.fontAwesome(ofSize: 20)] as [NSAttributedStringKey: Any]
-        let newPostIcon = String.fontAwesomeIcon(code: "fa-plus")
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes(attributes, for: .normal)
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes(attributes, for: .selected)
-        navigationItem.rightBarButtonItem?.title = newPostIcon
     }
     
     

@@ -85,5 +85,6 @@ class CoffeeShopsTable: UITableViewController {
         navigationItem.backBarButtonItem = backItem
         navigationController?.pushViewController(coffeeShopController, animated: true)
     }
-
+    
 }
+
