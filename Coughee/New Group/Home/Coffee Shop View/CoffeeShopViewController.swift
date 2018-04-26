@@ -67,6 +67,7 @@ class CoffeeShopViewController: UIViewController {
     }
     
     func setupContent() {
+        bottomContainer.delegate = self
         bottomContainer.coffeeShop = self.coffeeShop
         self.view.addSubview(bottomContainer)
         bottomContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -86,3 +87,13 @@ class CoffeeShopViewController: UIViewController {
     }
 
 }
+
+extension CoffeeShopViewController: NewPostDelegate {
+    
+    func showNewPostModal(menuItem: MenuItem) {
+        let createNewPost = CreatePostViewController()
+        createNewPost.menuItem = menuItem
+        self.present(createNewPost, animated: true, completion: nil)
+    }
+}
+

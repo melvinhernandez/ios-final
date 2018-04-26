@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol NewPostDelegate {
+    func showNewPostModal(menuItem: MenuItem)
+}
+
 class CoffeeShopMenuView: BaseCollectionCell, UITableViewDelegate, UITableViewDataSource {
     
     var menu : [MenuItem] = []
+    
+    var delegate: NewPostDelegate!
     
     let cellId = "menuItem"
     
@@ -68,7 +74,10 @@ class CoffeeShopMenuView: BaseCollectionCell, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let menuItem = self.menu[indexPath.row]
-        print(menuItem.name)
+        if (delegate == nil) {
+            print("wtffff")
+        }
+        delegate.showNewPostModal(menuItem: menuItem)
     }
     
 }

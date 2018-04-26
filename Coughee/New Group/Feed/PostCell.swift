@@ -46,9 +46,9 @@ class PostCell: BasePostCell {
     
     let coffeeShopIcon: UILabel = {
         let label = UILabel()
-        label.font = UIFont.fontAwesome(ofSize: 16)
+        label.font = UIFont.fontAwesome(ofSize: 18)
         label.text = String.fontAwesomeIcon(code: "fa-map-marker")
-        label.textColor = Colors.coral
+        label.textColor = Colors.brownLatte
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -57,8 +57,7 @@ class PostCell: BasePostCell {
         let label = UILabel()
         label.text = "Free Speech Movement Cafe"
         label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = Colors.coral
-        label.textAlignment = .right
+        label.textColor = Colors.dirtyBrown
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -88,6 +87,16 @@ class PostCell: BasePostCell {
         return label
     }()
     
+    let menuItemName: UILabel = {
+        let label = UILabel()
+        label.text = "Mocha Glacier"
+        label.textAlignment = .right
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = Colors.coral
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let textContainer: UIView = {
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -105,7 +114,7 @@ class PostCell: BasePostCell {
         let caption = UILabel()
         caption.font = UIFont.systemFont(ofSize: 14)
         caption.textColor = Colors.darkGray
-        caption.text = "Iced Americano"
+        caption.text = "Howdy! I just had a cup of coffee with my friend Alex G! <3"
         caption.lineBreakMode = .byWordWrapping
         caption.numberOfLines = 2
         caption.translatesAutoresizingMaskIntoConstraints = false
@@ -121,17 +130,19 @@ class PostCell: BasePostCell {
         addSubview(nameLabel)
         addSubview(timeLabel)
         
-        addSubview(shopContainer)
-        shopContainer.addSubview(coffeeShopIcon)
-        shopContainer.addSubview(coffeeShopLabel)
-        
         addSubview(caffeineContainer)
         caffeineContainer.addSubview(coffeeIcon)
         caffeineContainer.addSubview(caffeineAmount)
+        addSubview(menuItemName)
         
         addSubview(textContainer)
         textContainer.addSubview(leftBorder)
         textContainer.addSubview(postCaption)
+        
+        addSubview(shopContainer)
+        shopContainer.addSubview(coffeeShopIcon)
+        shopContainer.addSubview(coffeeShopLabel)
+        
         
         let imageConstraints = [
             avatarView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
@@ -154,23 +165,30 @@ class PostCell: BasePostCell {
             timeLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 100)
         ]
         
+        let menuItemNameConstraints = [
+            menuItemName.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor),
+            menuItemName.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
+            menuItemName.heightAnchor.constraint(lessThanOrEqualToConstant: 20),
+            menuItemName.topAnchor.constraint(equalTo: caffeineContainer.bottomAnchor, constant: 4)
+        ]
+        
         let shopContainerConstraints = [
-            shopContainer.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor),
+            shopContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 32),
             shopContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
-            shopContainer.heightAnchor.constraint(lessThanOrEqualToConstant: 20),
-            shopContainer.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4)
+            shopContainer.heightAnchor.constraint(lessThanOrEqualToConstant: 24),
+            shopContainer.topAnchor.constraint(equalTo: textContainer.bottomAnchor, constant: 8)
         ]
         
         
         let coffeeShopNameConstraints = [
-            coffeeShopLabel.leadingAnchor.constraint(equalTo: coffeeShopIcon.trailingAnchor),
+            coffeeShopLabel.leadingAnchor.constraint(equalTo: shopContainer.leadingAnchor, constant: 40),
             coffeeShopLabel.trailingAnchor.constraint(equalTo: shopContainer.trailingAnchor),
             coffeeShopLabel.topAnchor.constraint(equalTo: shopContainer.topAnchor),
             coffeeShopLabel.bottomAnchor.constraint(equalTo: shopContainer.bottomAnchor)
         ]
         
         let coffeeShopIconConstraints = [
-            coffeeShopIcon.trailingAnchor.constraint(equalTo: coffeeShopLabel.leadingAnchor, constant: -4),
+            coffeeShopIcon.leadingAnchor.constraint(equalTo: shopContainer.leadingAnchor),
             coffeeShopIcon.widthAnchor.constraint(lessThanOrEqualToConstant: 12),
             coffeeShopIcon.topAnchor.constraint(equalTo: shopContainer.topAnchor),
             coffeeShopIcon.bottomAnchor.constraint(equalTo: shopContainer.bottomAnchor)
@@ -230,6 +248,7 @@ class PostCell: BasePostCell {
         NSLayoutConstraint.activate(caffeineConstraints)
         NSLayoutConstraint.activate(coffeeIconConstraints)
         NSLayoutConstraint.activate(caffeineAmountConstraints)
+        NSLayoutConstraint.activate(menuItemNameConstraints)
         
         NSLayoutConstraint.activate(textContainerConstraints)
         NSLayoutConstraint.activate(leftBorderConstraints)

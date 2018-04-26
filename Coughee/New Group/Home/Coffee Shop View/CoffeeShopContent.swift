@@ -15,6 +15,8 @@ class CoffeeShopContent: UIView, UICollectionViewDataSource, UICollectionViewDel
     let cellMenuItemId = "menuItemCell"
     var coffeeShop: CoffeeShop?
     
+    var delegate: NewPostDelegate?
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
@@ -86,12 +88,13 @@ class CoffeeShopContent: UIView, UICollectionViewDataSource, UICollectionViewDel
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellMenuItemId, for: indexPath) as! CoffeeShopMenuView
             cell.menu = CoffeeShop.coffeeShopMenus[(self.coffeeShop?.placeID)!]!
+            cell.delegate = self.delegate
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width, height: frame.height)
+        return CGSize(width: frame.width, height: frame.height + 100)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
