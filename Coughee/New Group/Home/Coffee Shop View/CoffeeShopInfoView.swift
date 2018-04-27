@@ -1,31 +1,21 @@
 //
-//  CoffeeShopMenuView.swift
+//  CoffeeShopInfoView.swift
 //  Coughee
 //
-//  Created by Melvin  Hernandez on 4/22/18.
+//  Created by Melvin  Hernandez on 4/26/18.
 //  Copyright © 2018 UC Berkeley. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import GoogleMaps
 
-protocol NewPostDelegate {
-    func showNewPostModal(menuItem: MenuItem)
-}
-
-class CoffeeShopMenuView: BaseCollectionCell, UITableViewDelegate, UITableViewDataSource {
+class CoffeeShopInfoView: BaseCollectionCell, UITableViewDelegate, UITableViewDataSource {
     
-    var menu : [MenuItem] = []
-    
-    var delegate: NewPostDelegate!
+    var coffeeShop: CoffeeShop?
     
     let cellId = "menuItem"
-    
-    let sizes = [
-        "extra-large": "XL",
-        "large" : "L",
-        "medium" : "M",
-        "small" : "S"
-    ]
+    let mapId = "mapCell"
     
     
     let tableView: UITableView = {
@@ -49,42 +39,87 @@ class CoffeeShopMenuView: BaseCollectionCell, UITableViewDelegate, UITableViewDa
             tableView.topAnchor.constraint(equalTo: self.topAnchor, constant: 70),
             tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -70)
         ]
+        tableView.register(MapCell.self, forCellReuseIdentifier: mapId)
         tableView.register(MenuItemCell.self, forCellReuseIdentifier: cellId)
         NSLayoutConstraint.activate(tableConstraints)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menu.count
+        switch section {
+        case 0:
+            return 1
+        default:
+            return 1
+        }
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MenuItemCell
-        let menuItem = self.menu[indexPath.row]
-        cell.itemName.text = "\(menuItem.name) (\(self.sizes[menuItem.size]!))"
-        cell.itemImage.image = UIImage(named: menuItem.type)
+        if (indexPath.section == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: mapId, for: indexPath) as! MapCell
+            cell.coffeeShop = self.coffeeShop
+            return cell
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        cell.textLabel?.text = "Hello"
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let menuItem = self.menu[indexPath.row]
-        if (delegate == nil) {
-            print("wtffff")
+        if (indexPath.section == 0) {
+            return 250
+        } else {
+            return 70
         }
-        delegate.showNewPostModal(menuItem: menuItem)
     }
     
 }
 
-class MenuItemCell: UITableViewCell {
+class MapCell: UITableViewCell {
+    
+    var coffeeShop: CoffeeShop?
+    
+    var mapContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    func setupCell() {
+        self.backgroundColor = Colors.gray
+        addSubview(mapContainer)
+        setupMap()
+        
+        let cellViewConstraints = [
+            mapContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            mapContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            mapContainer.topAnchor.constraint(equalTo: self.topAnchor),
+            mapContainer.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(cellViewConstraints)
+    }
+    
+    func setupMap() {
+        //setup mapView
+        let camera = GMSCameraPosition.camera(withLatitude: coffeeShop!.lat!, longitude: coffeeShop!.long!, zoom: 18)
+        let mapView = GMSMapView.map(withFrame: .zero, camera:camera)
+        mapView.isMyLocationEnabled = true
+        mapContainer = mapView
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2DMake(coffeeShop!.lat!, coffeeShop!.long!)
+        marker.title = coffeeShop!.name
+        marker.snippet = "Berkeley"
+        marker.map = mapView
+    }
+}
+
+class InfoCell: UITableViewCell {
     
     let cellView: UIView = {
         let view = UIView()
@@ -152,3 +187,4 @@ class MenuItemCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+

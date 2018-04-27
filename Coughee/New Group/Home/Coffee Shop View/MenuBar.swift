@@ -10,7 +10,7 @@ import UIKit
 
 class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    let menuBarItems = ["Shop", "Posts"]
+    let menuBarItems = ["Info","Menu", "Posts"]
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -52,7 +52,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         NSLayoutConstraint.activate([
             horizontalBarX!,
             horizontalBar.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            horizontalBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
+            horizontalBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/3),
             horizontalBar.heightAnchor.constraint(equalToConstant: 4)])
     }
     

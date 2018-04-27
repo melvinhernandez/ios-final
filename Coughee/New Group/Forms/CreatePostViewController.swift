@@ -164,6 +164,9 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         setupButton()
         setupDismissButton()
         setupText()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     func setupButton() {
@@ -185,6 +188,10 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         ]
         
         NSLayoutConstraint.activate(buttonConstraints)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func setupDismissButton() {
@@ -213,6 +220,11 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 print("what??")
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.inputField.resignFirstResponder()
+        return true
     }
     
     @objc func dismissForm() {

@@ -10,9 +10,10 @@ import UIKit
 
 class CoffeeShopContent: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    let contentStuff = ["Coffee Shop", "Posts"]
+    let contentStuff = ["Info", "Menu", "Posts"]
     let cellId = "coffeeShopContent"
     let cellMenuItemId = "menuItemCell"
+    let cellInfoItemId = "coffeeShopInfo"
     var coffeeShop: CoffeeShop?
     
     var delegate: NewPostDelegate?
@@ -45,6 +46,7 @@ class CoffeeShopContent: UIView, UICollectionViewDataSource, UICollectionViewDel
     func setupCollectionView() {
         collectionView.register(ContentCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(CoffeeShopMenuView.self, forCellWithReuseIdentifier: cellMenuItemId)
+        collectionView.register(CoffeeShopInfoView.self, forCellWithReuseIdentifier: cellInfoItemId)
         addSubview(collectionView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
@@ -80,15 +82,21 @@ class CoffeeShopContent: UIView, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.item == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ContentCell
-            cell.stuffTitle.text = contentStuff[indexPath.item]
-            cell.backgroundColor = .white
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellInfoItemId, for: indexPath) as! CoffeeShopInfoView
+            cell.coffeeShop = self.coffeeShop
+            cell.backgroundColor = Colors.gray
             return cell
-        } else {
+        } else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellMenuItemId, for: indexPath) as! CoffeeShopMenuView
             cell.menu = CoffeeShop.coffeeShopMenus[(self.coffeeShop?.placeID)!]!
+            cell.backgroundColor = Colors.gray
             cell.delegate = self.delegate
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ContentCell
+            cell.stuffTitle.text = contentStuff[indexPath.item]
+            cell.backgroundColor = Colors.gray
             return cell
         }
     }
@@ -98,7 +106,7 @@ class CoffeeShopContent: UIView, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        menuBar.horizontalBarX?.constant = scrollView.contentOffset.x / 2
+        menuBar.horizontalBarX?.constant = scrollView.contentOffset.x / 3
     }
     
     required init?(coder aDecoder: NSCoder) {

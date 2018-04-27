@@ -33,6 +33,7 @@
 		B0A8C5C52075F7B50072FA2A /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8C5C42075F7B50072FA2A /* LoginCoordinator.swift */; };
 		B0A8C5C72075FC910072FA2A /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0A8C5C62075FC910072FA2A /* Background.jpg */; };
 		B0C8B62D20927FD300F8B815 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8B62C20927FD300F8B815 /* CurrentUser.swift */; };
+		B0C8B62F2092D61300F8B815 /* CoffeeShopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8B62E2092D61300F8B815 /* CoffeeShopInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		B0A8C5C42075F7B50072FA2A /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		B0A8C5C62075FC910072FA2A /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Background.jpg; sourceTree = "<group>"; };
 		B0C8B62C20927FD300F8B815 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		B0C8B62E2092D61300F8B815 /* CoffeeShopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopInfoView.swift; sourceTree = "<group>"; };
 		C4B9FBF799DA85288838660F /* Pods_Coughee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coughee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F5C7F61916E01208C6A3FB /* Pods-Coughee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coughee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Coughee/Pods-Coughee.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,6 +207,7 @@
 				B04636D2208869C400E6E4E7 /* CoffeeShopViewController.swift */,
 				B00F4B77207F59EA00FBAABC /* CoffeeShopContent.swift */,
 				B089E2E0208D3B83007396AB /* CoffeeShopMenuView.swift */,
+				B0C8B62E2092D61300F8B815 /* CoffeeShopInfoView.swift */,
 				B00F4B70207F3EFC00FBAABC /* MenuBar.swift */,
 			);
 			path = "Coffee Shop View";
@@ -396,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0C8B62F2092D61300F8B815 /* CoffeeShopInfoView.swift in Sources */,
 				B00F4B78207F59EA00FBAABC /* CoffeeShopContent.swift in Sources */,
 				B04636CB20882DE900E6E4E7 /* UserViewController.swift in Sources */,
 				B057992F207D7BE200A6EF5C /* CustomTabBarController.swift in Sources */,
