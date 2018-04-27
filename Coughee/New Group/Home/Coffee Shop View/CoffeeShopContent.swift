@@ -23,7 +23,7 @@ class CoffeeShopContent: UIView, UICollectionViewDataSource, UICollectionViewDel
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .green
+        cv.backgroundColor = Colors.gray
         cv.dataSource = self
         cv.delegate = self
         return cv

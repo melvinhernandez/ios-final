@@ -14,7 +14,7 @@ class CoffeeShopInfoView: BaseCollectionCell, UITableViewDelegate, UITableViewDa
     
     var coffeeShop: CoffeeShop?
     
-    let cellId = "menuItem"
+    let cellId = "infoItem"
     let mapId = "mapCell"
     
     
@@ -40,7 +40,7 @@ class CoffeeShopInfoView: BaseCollectionCell, UITableViewDelegate, UITableViewDa
             tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -70)
         ]
         tableView.register(MapCell.self, forCellReuseIdentifier: mapId)
-        tableView.register(MenuItemCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         NSLayoutConstraint.activate(tableConstraints)
     }
     
@@ -59,14 +59,16 @@ class CoffeeShopInfoView: BaseCollectionCell, UITableViewDelegate, UITableViewDa
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.section == 0) {
+        if (indexPath.section == 0 && indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: mapId, for: indexPath) as! MapCell
             cell.coffeeShop = self.coffeeShop
+            cell.setupCell()
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+            cell.textLabel?.text = "Hello"
             return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        cell.textLabel?.text = "Hello"
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -83,17 +85,26 @@ class MapCell: UITableViewCell {
     
     var coffeeShop: CoffeeShop?
     
-    var mapContainer: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
+    var mapContainer: GMSMapView = {
+        let view = GMSMapView()
         return view
     }()
+
     
     func setupCell() {
         self.backgroundColor = Colors.gray
-        addSubview(mapContainer)
         setupMap()
+    }
+    
+    func setupMap() {
+        //setup mapView
+        let camera = GMSCameraPosition.camera(withLatitude: coffeeShop!.lat!, longitude: coffeeShop!.long!, zoom: 18)
+        let mapView = GMSMapView.map(withFrame: .zero, camera:camera)
+        mapView.isMyLocationEnabled = true
+        self.mapContainer = mapView
+        self.addSubview(mapContainer)
+        
+        mapContainer.translatesAutoresizingMaskIntoConstraints = false
         
         let cellViewConstraints = [
             mapContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -103,20 +114,15 @@ class MapCell: UITableViewCell {
         ]
         
         NSLayoutConstraint.activate(cellViewConstraints)
-    }
-    
-    func setupMap() {
-        //setup mapView
-        let camera = GMSCameraPosition.camera(withLatitude: coffeeShop!.lat!, longitude: coffeeShop!.long!, zoom: 18)
-        let mapView = GMSMapView.map(withFrame: .zero, camera:camera)
-        mapView.isMyLocationEnabled = true
-        mapContainer = mapView
+        
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2DMake(coffeeShop!.lat!, coffeeShop!.long!)
         marker.title = coffeeShop!.name
         marker.snippet = "Berkeley"
         marker.map = mapView
+        
     }
+    
 }
 
 class InfoCell: UITableViewCell {
