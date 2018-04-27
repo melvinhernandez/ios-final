@@ -14,9 +14,9 @@ class Post {
     var shop: String
     var caffeine: Int
     var caption: String
-    var date: Date
+    var date: String
     
-    init(username: String, item: String, shop: String, caffeine: Int, caption: String, date:Date) {
+    init(username: String, item: String, shop: String, caffeine: Int, caption: String, date:String) {
         self.username = username
         self.item = item
         self.shop = shop

@@ -206,8 +206,11 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         if let text = inputField.text {
             if text.count > 0 && text.count <= 60 {
                 let timeOfPost = Date()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let dateString = dateFormatter.string(from: timeOfPost)
                 let coffeeShopName = coffeeShop?.name!
-                let newPost = Post(username: currentUser.username, item: (menuItem?.name)!, shop: coffeeShopName!, caffeine: (menuItem?.caffeine)!, caption: text, date: timeOfPost)
+                let newPost = Post(username: currentUser.username, item: (menuItem?.name)!, shop: coffeeShopName!, caffeine: (menuItem?.caffeine)!, caption: text, date: dateString)
                 sendPost(post: newPost)
             } else {
                 print("what??")
@@ -224,9 +227,9 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
     func sendPost(post: Post) {
         let dbRef = Database.database().reference()
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.A"
-        let dateString = dateFormatter.string(from: post.date)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.A"
+//        let dateString = dateFormatter.string(from: post.date)
         
         let postDict: [String:AnyObject] = [
                                             "username": post.username as AnyObject,
@@ -234,7 +237,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                                             "coffeeShop": post.shop as AnyObject,
                                             "caffeine": post.caffeine as AnyObject,
                                             "caption": post.caption as AnyObject,
-                                            "date": dateString as AnyObject]
+                                            "date": post.date as AnyObject]
         
         let newPostRef = dbRef.child("Posts").childByAutoId()
         newPostRef.setValue(postDict) { (err, ref) -> Void in
