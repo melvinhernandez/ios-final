@@ -38,16 +38,17 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func retrieveData() {
+        self.postsArray = []
         let dbRef = Database.database().reference()
         dbRef.child("Posts").observeSingleEvent(of: .value, with: { snapshot -> Void in
             if snapshot.exists() {
                 if let posts = snapshot.value as? [String:AnyObject] {
                     print(posts)
                     for (_, val) in posts {
-                        print(val)
+                        
                         let post = val
                         let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, date: post["date"]! as! String)
-                        print(newPost.username)
+                        
                         self.postsArray.append(newPost)
                     }
                     self.collectionView?.reloadData()
