@@ -51,8 +51,8 @@ class CurrentUser {
     /* Get the current user image. */
     func getUserImage() {
         dbRef.child("Users").child(id).child("Image").observeSingleEvent(of: .value, with: { (snapshot) in
-            let img = snapshot.value as? String ?? "1000"
-            self.image = "img\(img)"
+            let img = snapshot.value as? String ?? "0"
+            self.image = "Img\(img)"
         })
     }
     

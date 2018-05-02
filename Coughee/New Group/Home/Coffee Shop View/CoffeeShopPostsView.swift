@@ -84,7 +84,7 @@ class CoffeeShopPostsView: BaseCollectionCell, UICollectionViewDelegate, UIColle
                     for key in posts.keys {
                         if self.referenceKeys.contains(key) {
                             let post = posts[key] as! [String:AnyObject]
-                            let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String)
+                            let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String, img: post["img"] as! String)
                             self.shopsPostsArray.append(newPost)
                         }
                     }
@@ -116,6 +116,7 @@ class CoffeeShopPostsView: BaseCollectionCell, UICollectionViewDelegate, UIColle
         cell.menuItemName.text = post.item
         cell.postCaption.text = post.caption
         cell.timeLabel.text = timeAgoFormat(post.date)
+        cell.avatarView.image = UIImage(named: post.img)
         return cell
     }
     

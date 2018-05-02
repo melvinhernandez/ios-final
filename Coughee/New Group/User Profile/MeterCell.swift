@@ -132,6 +132,7 @@ class MeterCell: BasePostCell {
         self.addSubview(textContainer)
         textContainer.addSubview(messageLabel)
         if let milli = self.mgs {
+            print(self.mgs)
             meter.progress = CGFloat(milli)/400
             mgLabel.text = "\(milli)mgs"
         }

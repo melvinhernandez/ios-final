@@ -76,13 +76,14 @@ class UserViewController: UICollectionViewController, UICollectionViewDelegateFl
                             if let diff = Calendar.current.dateComponents([.hour], from: postDate! as Date, to: Date()).hour, diff < 24 {
                                 self.caffeineIntake += post["caffeine"] as! Int
                             }
-                            let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String)
+                            let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String, img: post["img"] as! String)
                             self.UserPostsArray.append(newPost)
                         }
                     }
                     self.UserPostsArray = self.UserPostsArray.sorted(by: {
                         $0.date.compare($1.date) == .orderedDescending
                     })
+                    print("intake is:")
                     print(self.caffeineIntake)
                     self.collectionView?.reloadData()
                 }
