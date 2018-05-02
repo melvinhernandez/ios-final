@@ -47,7 +47,7 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
                     for (_, val) in posts {
                         let post = val
                         let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String, img: post["img"] as! String)
-                        
+                        print("post img in feed is: \(post["img"] as! String)")
                         self.postsArray.append(newPost)
                     }
                     self.postsArray = self.postsArray.sorted(by: {

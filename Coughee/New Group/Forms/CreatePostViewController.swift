@@ -221,6 +221,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 if let img = currentUser.image {
                     userImg = img
                 }
+                print("posting post with user img as: \(userImg)")
                 let newPost = Post(username: currentUser.username, item: (menuItem?.name)!, shop: coffeeShopName!, caffeine: (menuItem?.caffeine)!, caption: text, dateString: dateString, img: userImg)
                 sendPost(post: newPost)
             } else {

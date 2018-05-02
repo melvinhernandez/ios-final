@@ -94,9 +94,11 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
     
     func assignRandomImage(signupUser: User?) {
         if let user = signupUser {
+            print("assigning image to user:")
             let randomImg = getRandomImage()
             let ref = dbRef.child("Users").child(user.uid).child("Image")
-            ref.setValue(String(describing: randomImg))
+            ref.setValue("Img\(String(describing: randomImg))")
+            print("saved to user as: \(String(describing: randomImg))")
         }
     }
     

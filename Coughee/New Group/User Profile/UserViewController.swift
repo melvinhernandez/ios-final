@@ -115,6 +115,7 @@ class UserViewController: UICollectionViewController, UICollectionViewDelegateFl
             cell.menuItemName.text = post.item
             cell.postCaption.text = post.caption
             cell.timeLabel.text = timeAgoFormat(post.date)
+            cell.avatarView.image = UIImage(named: post.img)
             return cell
         }
     }
