@@ -24,8 +24,6 @@ class CurrentUser {
         id = currentUser?.uid
     }
     
-    
-    
     /*
      Gets the posts IDs for the current user.
      */
@@ -44,7 +42,6 @@ class CurrentUser {
      Add new post to current user.
      */
     func addNewPost(postID: String) {
-        // YOUR CODE HERE
         let ref = dbRef.child("Users").child(id).child("Posts").childByAutoId()
         ref.setValue(postID)
     }
