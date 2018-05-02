@@ -47,46 +47,44 @@ class UserViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func retrieveData() {
+        print("Retrieving posts from userviewcontroller")
         self.UserPostsArray = []
         self.userRefKeys = []
         self.caffeineIntake = 0
-        dbRef.child("Users").child(currentUser.id).observeSingleEvent(of: .value, with: { snapshot -> Void in
+        dbRef.child("Users").child(currentUser.id).child("Posts").observeSingleEvent(of: .value, with: { snapshot -> Void in
             if snapshot.exists() {
-                if let references = snapshot.value as? [String:NSDictionary] {
+                if let references = snapshot.value as? [String:AnyObject] {
                     for (_, val) in references {
-                        let reference = val
-                        for (_, value) in reference {
-                            self.userRefKeys.append((value as? String)!)
-                        }
+                        self.userRefKeys.append((val as? String)!)
                     }
-                }
-            }
-        })
-        dbRef.child("Posts").observeSingleEvent(of: .value, with: { snapshot -> Void in
-            if snapshot.exists() {
-                if let posts = snapshot.value as? [String:AnyObject] {
-                    for key in posts.keys {
-                        if self.userRefKeys.contains(key) {
-                            let post = posts[key] as! [String:AnyObject]
-                            let postDateAsString = post["date"]!
-                            let dateFormatterGet = DateFormatter()
-                            dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                            let postDate: Date? = dateFormatterGet.date(from: postDateAsString as! String)
-//                            let postDate: Date? = dateFormatterGet.date(from: "2018-04-20 01:01:01")
-                            if let diff = Calendar.current.dateComponents([.hour], from: postDate! as Date, to: Date()).hour, diff < 24 {
-                                self.caffeineIntake += post["caffeine"] as! Int
+                    self.dbRef.child("Posts").observeSingleEvent(of: .value, with: { snapshot -> Void in
+                        if snapshot.exists() {
+                            if let posts = snapshot.value as? [String:AnyObject] {
+                                for key in posts.keys {
+                                    if self.userRefKeys.contains(key) {
+                                        let post = posts[key] as! [String:AnyObject]
+                                        let postDateAsString = post["date"]!
+                                        let dateFormatterGet = DateFormatter()
+                                        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                        let postDate: Date? = dateFormatterGet.date(from: postDateAsString as! String)
+                                        if let diff = Calendar.current.dateComponents([.hour], from: postDate! as Date, to: Date()).hour, diff < 24 {
+                                            self.caffeineIntake += post["caffeine"] as! Int
+                                        }
+                                        let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String, img: post["img"] as! String)
+                                        self.UserPostsArray.append(newPost)
+                                    }
+                                }
+                                self.UserPostsArray = self.UserPostsArray.sorted(by: {
+                                    $0.date.compare($1.date) == .orderedDescending
+                                })
+                                print("intake is:")
+                                print(self.caffeineIntake)
+                                self.collectionView?.reloadData()
                             }
-                            let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String, img: post["img"] as! String)
-                            self.UserPostsArray.append(newPost)
                         }
-                    }
-                    self.UserPostsArray = self.UserPostsArray.sorted(by: {
-                        $0.date.compare($1.date) == .orderedDescending
                     })
-                    print("intake is:")
-                    print(self.caffeineIntake)
-                    self.collectionView?.reloadData()
                 }
+                
             }
         })
     }
