@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import GoogleMaps
+import SafariServices
 
 class CoffeeShopInfoView: BaseCollectionCell, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,6 +17,9 @@ class CoffeeShopInfoView: BaseCollectionCell, UITableViewDelegate, UITableViewDa
     
     let cellId = "infoItem"
     let mapId = "mapCell"
+    let centeredId = "coffeeShopInfoCell"
+    
+    let headers = ["Address", "Hours", "Website", "Rating"]
     
     
     let tableView: UITableView = {
@@ -30,6 +34,7 @@ class CoffeeShopInfoView: BaseCollectionCell, UITableViewDelegate, UITableViewDa
     override func setupViews() {
         super.setupViews()
         
+        print("before fuck up?")
         tableView.delegate = self
         tableView.dataSource = self
         addSubview(tableView)
@@ -42,6 +47,7 @@ class CoffeeShopInfoView: BaseCollectionCell, UITableViewDelegate, UITableViewDa
         tableView.register(MapCell.self, forCellReuseIdentifier: mapId)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         tableView.register(HoursCell.self, forCellReuseIdentifier: "hoursCell")
+        tableView.register(CoffeeInformation.self, forCellReuseIdentifier: centeredId)
         NSLayoutConstraint.activate(tableConstraints)
     }
     
@@ -85,33 +91,48 @@ class CoffeeShopInfoView: BaseCollectionCell, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
+        if section == 0 {
+            return view
+        }
         let header = UILabel()
         header.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         header.textAlignment = .center
-        header.textColor = Colors.coral
+        header.text = self.headers[section-1]
+        header.textColor = Colors.darkGray
         header.translatesAutoresizingMaskIntoConstraints = false
-        view.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(header)
-        view.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)
-        
+        view.backgroundColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 0.9)
+
         let headerCons = [
             header.topAnchor.constraint(equalTo: view.topAnchor),
             header.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             header.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             header.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
-        
-        let viewCons = [
-            view.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-
-        ]
-        NSLayoutConstraint.activate(viewCons)
         NSLayoutConstraint.activate(headerCons)
         return view
     }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0
+        }
+        return 60
+    }
     
+    func createAddress(addr: String) -> String {
+        let parts = addr.components(separatedBy: ",")
+        var newAddr = ""
+        for (index, element) in parts.enumerated() {
+            if (index == 0) {
+                newAddr = element + "\n"
+            } else {
+                newAddr += element
+            }
+        }
+        return newAddr
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
@@ -119,14 +140,14 @@ class CoffeeShopInfoView: BaseCollectionCell, UITableViewDelegate, UITableViewDa
             let cell = tableView.dequeueReusableCell(withIdentifier: mapId, for: indexPath) as! MapCell
             cell.coffeeShop = self.coffeeShop
             cell.setupCell()
+            cell.selectionStyle = .none
             return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: centeredId, for: indexPath) as! CoffeeInformation
             if let rating = coffeeShop?.rating {
-                cell.textLabel?.text = "\(rating)"
-            } else {
-                cell.textLabel?.text = "Unknown"
+                cell.content.text = "\(rating)"
             }
+            cell.selectionStyle = .none
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "hoursCell", for: indexPath) as! HoursCell
@@ -136,27 +157,41 @@ class CoffeeShopInfoView: BaseCollectionCell, UITableViewDelegate, UITableViewDa
                 cell.hourLabel.text = "Unknown"
             }
             cell.setupHours()
+            cell.selectionStyle = .none
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: centeredId, for: indexPath) as! CoffeeInformation
+            if let address = coffeeShop?.address {
+                cell.content.text = createAddress(addr: address)
+                cell.content.numberOfLines = 0
+            }
+            cell.selectionStyle = .none
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-            if let addr = coffeeShop?.address {
-                cell.textLabel?.text = addr
-            } else {
-                cell.textLabel?.text = "Unknown"
-            }
-            return cell
-        case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: centeredId, for: indexPath) as! CoffeeInformation
             if let website = coffeeShop?.website {
-                cell.textLabel?.text = website
+                cell.url = website
+                cell.content.textColor = .blue
+                cell.content.text = "Open in Safari"
             } else {
-                cell.textLabel?.text = "Unknown"
+                cell.selectionStyle = .none
             }
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-            cell.textLabel?.text = "Hello"
+            cell.textLabel?.text = "Welcome"
+            cell.selectionStyle = .none
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 3 {
+            if let website = coffeeShop?.website {
+                UIApplication.shared.open(URL(string : website)!, options: [:], completionHandler: { (status) in
+                    print("okay?")
+                })
+            }
         }
     }
     
@@ -183,6 +218,7 @@ class HoursCell: UITableViewCell {
     }()
     
     func setupHours() {
+        print("Setting up Hours")
         self.addSubview(hourLabel)
         let textLabelCons = [
             hourLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -300,6 +336,62 @@ class InfoCell: UITableViewCell {
         NSLayoutConstraint.activate(cellViewConstraints)
         NSLayoutConstraint.activate(imageConstraints)
         NSLayoutConstraint.activate(itemNameConstraints)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class CoffeeInformation: UITableViewCell {
+    
+    
+    let cellView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let content: UILabel = {
+        let label = UILabel()
+        label.text = "Unknown"
+        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
+        label.textColor = Colors.darkGray
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    var url: String?
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setupCell()
+    }
+    
+    func setupCell() {
+        self.backgroundColor = Colors.gray
+        addSubview(cellView)
+        cellView.addSubview(content)
+        
+        let cellViewConstraints = [
+            cellView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            cellView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            cellView.topAnchor.constraint(equalTo: self.topAnchor),
+            cellView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ]
+        
+        let contentConstraints = [
+            content.leadingAnchor.constraint(equalTo: cellView.leadingAnchor),
+            content.trailingAnchor.constraint(equalTo: cellView.trailingAnchor),
+            content.topAnchor.constraint(equalTo: cellView.topAnchor),
+            content.bottomAnchor.constraint(equalTo: cellView.bottomAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(cellViewConstraints)
+        NSLayoutConstraint.activate(contentConstraints)
     }
     
     required init?(coder aDecoder: NSCoder) {
