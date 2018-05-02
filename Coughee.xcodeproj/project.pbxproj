@@ -36,10 +36,6 @@
 		B0A8C5C72075FC910072FA2A /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0A8C5C62075FC910072FA2A /* Background.jpg */; };
 		B0C8B62D20927FD300F8B815 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8B62C20927FD300F8B815 /* CurrentUser.swift */; };
 		B0C8B62F2092D61300F8B815 /* CoffeeShopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8B62E2092D61300F8B815 /* CoffeeShopInfoView.swift */; };
-		CE50A50E2093363000DE711C /* UserContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A50D2093363000DE711C /* UserContent.swift */; };
-		CE50A5102093365B00DE711C /* UserGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A50F2093365B00DE711C /* UserGraphView.swift */; };
-		CE50A512209336AC00DE711C /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A511209336AC00DE711C /* UserInfoView.swift */; };
-		CE50A514209336CF00DE711C /* UserMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A513209336CF00DE711C /* UserMenuBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,10 +102,6 @@
 		B0C8B62E2092D61300F8B815 /* CoffeeShopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopInfoView.swift; sourceTree = "<group>"; };
 		C4B9FBF799DA85288838660F /* Pods_Coughee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coughee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2CB8ED209460AE000D5737 /* Charts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Charts; sourceTree = "<group>"; };
-		CE50A50D2093363000DE711C /* UserContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContent.swift; sourceTree = "<group>"; };
-		CE50A50F2093365B00DE711C /* UserGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGraphView.swift; sourceTree = "<group>"; };
-		CE50A511209336AC00DE711C /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
-		CE50A513209336CF00DE711C /* UserMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuBar.swift; sourceTree = "<group>"; };
 		CEAE515E2094624E002EBB76 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Coughee/Charts.xcodeproj; sourceTree = "<group>"; };
 		D3F5C7F61916E01208C6A3FB /* Pods-Coughee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coughee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Coughee/Pods-Coughee.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,10 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				B04636CA20882DE900E6E4E7 /* UserViewController.swift */,
-				CE50A50D2093363000DE711C /* UserContent.swift */,
-				CE50A50F2093365B00DE711C /* UserGraphView.swift */,
-				CE50A511209336AC00DE711C /* UserInfoView.swift */,
-				CE50A513209336CF00DE711C /* UserMenuBar.swift */,
 				B034DBBC2099718700F0723D /* MeterCell.swift */,
 			);
 			path = "User Profile";
@@ -499,10 +487,7 @@
 				B00F4B76207F48E400FBAABC /* BaseCollectionCell.swift in Sources */,
 				B034DBBB209962D800F0723D /* CoffeeShopPostsView.swift in Sources */,
 				B00F4B73207F42B100FBAABC /* constants.swift in Sources */,
-				CE50A50E2093363000DE711C /* UserContent.swift in Sources */,
 				B00F4B6F207EC64B00FBAABC /* EntryController.swift in Sources */,
-				CE50A512209336AC00DE711C /* UserInfoView.swift in Sources */,
-				CE50A514209336CF00DE711C /* UserMenuBar.swift in Sources */,
 				B0A8C5C52075F7B50072FA2A /* LoginCoordinator.swift in Sources */,
 				B03653D4207861F7006019D3 /* CoffeeShopCell.swift in Sources */,
 				B034DBBD2099718700F0723D /* MeterCell.swift in Sources */,
@@ -510,7 +495,6 @@
 				B0A8C5C32075F7650072FA2A /* OverridenLoginViewController.swift in Sources */,
 				07302F6D208BDD0300C4A217 /* MenuItem.swift in Sources */,
 				B04636D920886A9A00E6E4E7 /* CreatePostViewController.swift in Sources */,
-				CE50A5102093365B00DE711C /* UserGraphView.swift in Sources */,
 				B05FF2F9207DC88E00360625 /* PostCell.swift in Sources */,
 				B0C8B62D20927FD300F8B815 /* CurrentUser.swift in Sources */,
 				07302F6F208D639200C4A217 /* Post.swift in Sources */,

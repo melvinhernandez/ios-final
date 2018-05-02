@@ -15,8 +15,9 @@ class Post {
     var caffeine: Int
     var caption: String
     var date: Date
+    var img: String
     
-    init(username: String, item: String, shop: String, caffeine: Int, caption: String, dateString:String) {
+    init(username: String, item: String, shop: String, caffeine: Int, caption: String, dateString:String, img: String) {
         self.username = username
         self.item = item
         self.shop = shop
@@ -25,6 +26,7 @@ class Post {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         self.date = dateFormatter.date(from: dateString)!
+        self.img = img
     }
     
 }

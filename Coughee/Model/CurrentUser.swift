@@ -15,6 +15,7 @@ class CurrentUser {
     var username: String!
     var id: String!
     var postsIDs: [String]?
+    var image: String?
     
     let dbRef = Database.database().reference()
     
@@ -22,6 +23,7 @@ class CurrentUser {
         let currentUser = Auth.auth().currentUser
         username = currentUser?.displayName
         id = currentUser?.uid
+        getUserImage()
     }
     
     /*
@@ -44,6 +46,23 @@ class CurrentUser {
     func addNewPost(postID: String) {
         let ref = dbRef.child("Users").child(id).child("Posts").childByAutoId()
         ref.setValue(postID)
+    }
+    
+    /* Get the current user image. */
+    func getUserImage() {
+        dbRef.child("Users").child(id).child("Image").observeSingleEvent(of: .value, with: { (snapshot) in
+            let img = snapshot.value as? String ?? "1000"
+            self.image = "img\(img)"
+        })
+    }
+    
+    /* Logs out current user */
+    func logout() {
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
 }

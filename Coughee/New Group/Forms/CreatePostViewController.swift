@@ -39,7 +39,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
     
     let itemName: UILabel = {
         let label = UILabel()
-        label.text = "Americano"
+        label.text = "Coffee"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = Colors.coral
@@ -70,7 +70,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
     
     let coffeeShopLabel: UILabel = {
         let label = UILabel()
-        label.text = "Free Speech Movement"
+        label.text = "Coffee Shop"
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = Colors.coral
@@ -95,7 +95,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
     
     let caffeineAmount: UILabel = {
         let label = UILabel()
-        label.text = "333 mgs"
+        label.text = "0 mgs"
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = Colors.coral
@@ -217,7 +217,11 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                 let dateString = dateFormatter.string(from: timeOfPost)
                 let coffeeShopName = coffeeShop?.name!
-                let newPost = Post(username: currentUser.username, item: (menuItem?.name)!, shop: coffeeShopName!, caffeine: (menuItem?.caffeine)!, caption: text, dateString: dateString)
+                var userImg = "Img1"
+                if let img = currentUser.image {
+                    userImg = img
+                }
+                let newPost = Post(username: currentUser.username, item: (menuItem?.name)!, shop: coffeeShopName!, caffeine: (menuItem?.caffeine)!, caption: text, dateString: dateString, img: userImg)
                 sendPost(post: newPost)
             } else {
                 print("what??")
@@ -250,7 +254,8 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                                             "coffeeShop": post.shop as AnyObject,
                                             "caffeine": post.caffeine as AnyObject,
                                             "caption": post.caption as AnyObject,
-                                            "date": dateString as AnyObject]
+                                            "date": dateString as AnyObject,
+                                            "img": post.img as AnyObject]
         
         let newPostRef = dbRef.child("Posts").childByAutoId()
         newPostRef.setValue(postDict) { (err, ref) -> Void in

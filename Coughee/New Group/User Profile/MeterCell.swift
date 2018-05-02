@@ -33,7 +33,8 @@ class MeterCell: BasePostCell {
     static var message: [String] = [
         "Keep sipping yo'",
         "Getting a little jittery there?",
-        "It must be finals week?"
+        "It must be finals week?",
+        "You've gone over the daily recommended dosage of 400mgs.\n Make sure to stay hydrated!\n"
     ]
     
     var mgs: Int?
@@ -68,7 +69,7 @@ class MeterCell: BasePostCell {
     
     let mgLabel : UILabel = {
         let label = UILabel()
-        label.text = "185mg"
+        label.text = "0mgs"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 28, weight: .heavy)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -98,6 +99,7 @@ class MeterCell: BasePostCell {
 
     let messageContent: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
         label.text = message[2]
         label.textAlignment = .center
         label.textColor = Colors.lightGray
@@ -129,6 +131,35 @@ class MeterCell: BasePostCell {
         
         self.addSubview(textContainer)
         textContainer.addSubview(messageLabel)
+        if let milli = self.mgs {
+            meter.progress = CGFloat(milli)/400
+            mgLabel.text = "\(milli)mgs"
+        }
+        if meter.progress < 0.6 {
+            meter.barBorderColor = MeterCell.borderColors[0]
+            meter.barFillColor = MeterCell.fillColors[0]
+            meter.barBackgroundColor = MeterCell.bgColors[0]
+            meter.labelTextColor = MeterCell.fillColors[0]
+            messageContent.text = MeterCell.message[0]
+        } else if (meter.progress > 0.6) && (meter.progress < 0.9) {
+            meter.barBorderColor = MeterCell.borderColors[1]
+            meter.barFillColor = MeterCell.fillColors[1]
+            meter.barBackgroundColor = MeterCell.bgColors[1]
+            meter.labelTextColor = MeterCell.fillColors[1]
+            messageContent.text = MeterCell.message[1]
+        } else {
+            meter.barBorderColor = MeterCell.borderColors[2]
+            meter.barFillColor = MeterCell.fillColors[2]
+            meter.barBackgroundColor = MeterCell.bgColors[2]
+            meter.labelTextColor = MeterCell.fillColors[2]
+            messageContent.text = MeterCell.message[2]
+        }
+        if let milli = self.mgs {
+            if (CGFloat(milli)/400) > 1.0 {
+                messageContent.text = MeterCell.message[3]
+            }
+        }
+        meter.animateTo(progress: meter.progress)
         textContainer.addSubview(mgLabel)
         textContainer.addSubview(dayLabel)
         

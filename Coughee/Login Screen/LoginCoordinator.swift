@@ -9,8 +9,11 @@
 import Foundation
 import ILLoginKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginCoordinator: ILLoginKit.LoginCoordinator {
+    
+    let dbRef = Database.database().reference()
     
     // Login coordinator.
     
@@ -76,7 +79,7 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
                 changeRequest.displayName = name
                 changeRequest.commitChanges() { (error) in
                     if error == nil {
-                        print("Success! Hello!")
+                        self.assignRandomImage(signupUser: user)
                         self.finish()
                     } else {
                         print("There was an error!")
@@ -84,9 +87,16 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
                 }
             } else {
                 // TODO: Better signup error handling.
-                print("lol error creating user")
                 print(error!)
             }
+        }
+    }
+    
+    func assignRandomImage(signupUser: User?) {
+        if let user = signupUser {
+            let randomImg = getRandomImage()
+            let ref = dbRef.child("Users").child(user.uid).child("Image")
+            ref.setValue(String(describing: randomImg))
         }
     }
     

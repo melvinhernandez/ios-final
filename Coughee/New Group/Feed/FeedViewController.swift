@@ -46,7 +46,7 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
                     print(posts)
                     for (_, val) in posts {
                         let post = val
-                        let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String)
+                        let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String, img: post["img"] as! String)
                         
                         self.postsArray.append(newPost)
                     }
@@ -71,6 +71,7 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
         cell.menuItemName.text = post.item
         cell.postCaption.text = post.caption
         cell.timeLabel.text = timeAgoFormat(post.date)
+        cell.avatarView.image = UIImage(named: post.img)
         return cell
     }
     

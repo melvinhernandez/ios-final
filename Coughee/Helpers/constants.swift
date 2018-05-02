@@ -22,3 +22,8 @@ struct Colors {
     static let matteWhite = UIColor(red:0.95, green:0.95, blue:0.96, alpha:1.0)
     static let coral = UIColor(red:0.90, green:0.40, blue:0.40, alpha:1.0)
 }
+
+/* Returns random number between 1 and 10 */
+func getRandomImage() -> Int {
+    return Int(arc4random_uniform(10)) + 1
+}
