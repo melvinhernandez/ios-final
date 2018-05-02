@@ -33,7 +33,8 @@ class MeterCell: BasePostCell {
     static var message: [String] = [
         "Keep sipping yo'",
         "Getting a little jittery there?",
-        "It must be finals week?"
+        "It must be finals week?",
+        "You've gone over the daily recommended dosage of 400mgs.\n Make sure to stay hydrated!\n"
     ]
     
     var mgs: Int?
@@ -98,6 +99,7 @@ class MeterCell: BasePostCell {
 
     let messageContent: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
         label.text = message[2]
         label.textAlignment = .center
         label.textColor = Colors.lightGray
@@ -151,6 +153,11 @@ class MeterCell: BasePostCell {
             meter.barBackgroundColor = MeterCell.bgColors[2]
             meter.labelTextColor = MeterCell.fillColors[2]
             messageContent.text = MeterCell.message[2]
+        }
+        if let milli = self.mgs {
+            if (CGFloat(milli)/400) > 1.0 {
+                messageContent.text = MeterCell.message[3]
+            }
         }
         meter.animateTo(progress: meter.progress)
         textContainer.addSubview(mgLabel)
