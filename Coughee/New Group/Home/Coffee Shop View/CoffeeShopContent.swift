@@ -14,6 +14,7 @@ class CoffeeShopContent: UIView, UICollectionViewDataSource, UICollectionViewDel
     let cellId = "coffeeShopContent"
     let cellMenuItemId = "menuItemCell"
     let cellInfoItemId = "coffeeShopInfo"
+    let coffeeShopPostsCellId = "coffeeShopPostsCell"
     var coffeeShop: CoffeeShop?
     
     var delegate: NewPostDelegate?
@@ -47,6 +48,7 @@ class CoffeeShopContent: UIView, UICollectionViewDataSource, UICollectionViewDel
         collectionView.register(ContentCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(CoffeeShopMenuView.self, forCellWithReuseIdentifier: cellMenuItemId)
         collectionView.register(CoffeeShopInfoView.self, forCellWithReuseIdentifier: cellInfoItemId)
+        collectionView.register(CoffeeShopPostsView.self, forCellWithReuseIdentifier: coffeeShopPostsCellId)
         addSubview(collectionView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
@@ -94,9 +96,9 @@ class CoffeeShopContent: UIView, UICollectionViewDataSource, UICollectionViewDel
             cell.delegate = self.delegate
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ContentCell
-            cell.stuffTitle.text = contentStuff[indexPath.item]
-            cell.backgroundColor = Colors.gray
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: coffeeShopPostsCellId, for: indexPath) as! CoffeeShopPostsView
+            cell.coffeeShop = self.coffeeShop
+            cell.setupCell()
             return cell
         }
     }

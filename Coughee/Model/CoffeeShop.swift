@@ -7,6 +7,8 @@
 
 import Foundation
 import GooglePlaces
+import FirebaseDatabase
+import FirebaseAuth
 
 class CoffeeShop {
     var placeID: String
@@ -119,6 +121,17 @@ class CoffeeShop {
             }
         })
     }
+    
+    /*
+     Add new post to coffe shop.
+     */
+    func addNewPost(postID: String) {
+        // YOUR CODE HERE
+        let dbRef = Database.database().reference()
+        let ref = dbRef.child("Shops").child(self.placeID).child("Posts").childByAutoId()
+        ref.setValue(postID)
+    }
+    
     static let genericMenu = [
         MenuItem(name: "House Coffee", caffeine: 91, size: "small", isHot: true, type: "coffee"),
         MenuItem(name: "House Coffee", caffeine: 190, size: "large", isHot: true, type: "coffee"),

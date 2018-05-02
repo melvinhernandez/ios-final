@@ -269,6 +269,9 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
             }
         }
         currentUser.addNewPost(postID: newPostRef.description())
+        if let shop = self.coffeeShop {
+            shop.addNewPost(postID: newPostRef.description())
+        }
     }
     
     // Views Logic
