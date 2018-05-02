@@ -27,13 +27,13 @@ class CoffeeShopPostsView: BaseCollectionCell, UICollectionViewDelegate, UIColle
         return cv
     }()
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        collectionView?.backgroundColor = Colors.gray
-//        collectionView?.alwaysBounceVertical = true
-//        collectionView?.register(PostCell.self, forCellWithReuseIdentifier: cellId)
-//    }
+    // Refresh UI element
+    let refresher: UIRefreshControl = {
+        let ref = UIRefreshControl()
+        ref.tintColor = Colors.coral
+        return ref
+    }()
+
     
     // There exists no viewwillappear so you will have to call on setupView from coffee shop content.
     func setupCell() {
@@ -48,6 +48,9 @@ class CoffeeShopPostsView: BaseCollectionCell, UICollectionViewDelegate, UIColle
         collectionView.dataSource = self
         self.addSubview(collectionView)
         
+        self.refresher.addTarget(self, action: #selector(retrieveData), for: .valueChanged)
+        collectionView.addSubview(refresher)
+        
         let cvCons = [
             collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 75),
             collectionView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -70),
@@ -59,7 +62,7 @@ class CoffeeShopPostsView: BaseCollectionCell, UICollectionViewDelegate, UIColle
     }
     
     //Retrieve Posts for corresponding coffee shop in DataBase
-    func retrieveData() {
+    @objc func retrieveData() {
         self.shopsPostsArray = []
         self.referenceKeys = []
         let dbRef = Database.database().reference()
@@ -94,6 +97,11 @@ class CoffeeShopPostsView: BaseCollectionCell, UICollectionViewDelegate, UIColle
                 }
             }
         })
+        self.stopRefresher()
+    }
+    
+    func stopRefresher() {
+        self.refresher.endRefreshing()
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.shopsPostsArray.count
