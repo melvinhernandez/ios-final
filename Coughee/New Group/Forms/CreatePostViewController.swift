@@ -128,7 +128,7 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
         let overcastBlueColor = UIColor(red: 0, green: 187/255, blue: 204/255, alpha: 1.0)
         let textFieldFrame = CGRect(x: 0, y: 0, width: 290, height: 60)
         let textField1 = SkyFloatingLabelTextField(frame: textFieldFrame)
-        textField1.placeholder = "What did you do?"
+        textField1.placeholder = "How was your experience?"
         textField1.title = "Caption"
         textField1.lineColor = Colors.coral
         textField1.tintColor = Colors.coral
@@ -268,9 +268,9 @@ class CreatePostViewController: UIViewController, UITextFieldDelegate {
                 })
             }
         }
-        currentUser.addNewPost(postID: newPostRef.description())
+        currentUser.addNewPost(postID: newPostRef.key)
         if let shop = self.coffeeShop {
-            shop.addNewPost(postID: newPostRef.description())
+            shop.addNewPost(postID: newPostRef.key)
         }
     }
     

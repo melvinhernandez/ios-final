@@ -2,7 +2,7 @@
 //  CoffeeShopPostsView.swift
 //  Coughee
 //
-//  Created by Melvin  Hernandez and Juan Cervantes on 5/1/18.
+//  Created by Melvin Hernandez and Juan Cervantes on 5/1/18.
 //  Copyright © 2018 UC Berkeley. All rights reserved.
 //
 
@@ -14,7 +14,8 @@ import FirebaseAuth
 class CoffeeShopPostsView: BaseCollectionCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     private let cellId = "postCell"
-    var postsArray = [Post]()
+    var shopsPostsArray = [Post]()
+    var referenceKeys = [String]()
     var coffeeShop: CoffeeShop?
     
     let collectionView: UICollectionView = {
@@ -34,16 +35,14 @@ class CoffeeShopPostsView: BaseCollectionCell, UICollectionViewDelegate, UIColle
 //        collectionView?.register(PostCell.self, forCellWithReuseIdentifier: cellId)
 //    }
     
-    // There exists no viewwillappear so you will have to call on setupView from coffee shop view controller.
+    // There exists no viewwillappear so you will have to call on setupView from coffee shop content.
     func setupCell() {
-        print("setting up cell")
         collectionView.register(PostCell.self, forCellWithReuseIdentifier: cellId)
         retrieveData()
         self.setupViews()
     }
     
     override func setupViews() {
-        print("ayyyeee")
         super.setupViews()
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -57,28 +56,38 @@ class CoffeeShopPostsView: BaseCollectionCell, UICollectionViewDelegate, UIColle
         ]
         
         NSLayoutConstraint.activate(cvCons)
-        collectionView.reloadData()
-        print("activated")
     }
     
-    // Figure out how to make the call to the database.
-    // For right now, we'll just have static stuff.
+    //Retrieve Posts for corresponding coffee shop in DataBase
     func retrieveData() {
-        return
-        self.postsArray = []
+        self.shopsPostsArray = []
+        self.referenceKeys = []
         let dbRef = Database.database().reference()
+        dbRef.child("Shops").child((coffeeShop?.placeID)!).observeSingleEvent(of: .value, with: { snapshot -> Void in
+            if snapshot.exists() {
+                if let references = snapshot.value as? [String:NSDictionary] {
+                    for (_, val) in references {
+                        let reference = val
+                        for (_, value) in reference {
+                            self.referenceKeys.append((value as? String)!)
+                        }
+                    }
+                }
+            }
+        })
         dbRef.child("Posts").observeSingleEvent(of: .value, with: { snapshot -> Void in
             if snapshot.exists() {
                 if let posts = snapshot.value as? [String:AnyObject] {
                     print(posts)
-                    for (_, val) in posts {
-                        
-                        let post = val
-                        let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String)
-                        
-                        self.postsArray.append(newPost)
+                    for key in posts.keys {
+                        if self.referenceKeys.contains(key) {
+                            let post = posts[key] as! [String:AnyObject]
+                            let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String)
+                            self.shopsPostsArray.append(newPost)
+                        }
                     }
-                    self.postsArray = self.postsArray.sorted(by: {
+                    print(self.shopsPostsArray)
+                    self.shopsPostsArray = self.shopsPostsArray.sorted(by: {
                         $0.date.compare($1.date) == .orderedDescending
                     })
                     self.collectionView.reloadData()
@@ -87,30 +96,20 @@ class CoffeeShopPostsView: BaseCollectionCell, UICollectionViewDelegate, UIColle
         })
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return self.shopsPostsArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PostCell
         // change this once you have the data
-//        let post = postsArray[indexPath.item]
-//        cell.nameLabel.text = post.username
-//        cell.coffeeShopLabel.text = post.shop
-//        cell.caffeineAmount.text = String(post.caffeine) + " mgs"
-//        cell.menuItemName.text = post.item
-//        cell.postCaption.text = post.caption
-//        cell.timeLabel.text = timeAgoFormat(post.date)
-        cell.nameLabel.text = "frank ocean"
-        if let shop = self.coffeeShop {
-            cell.coffeeShopLabel.text = shop.name
-        } else {
-            cell.coffeeShopLabel.text = "No shop?"
-        }
-        cell.caffeineAmount.text = "120 mgs"
-        cell.menuItemName.text = "Mocha Glacier"
-        cell.postCaption.text = "Hey just chilling out here. This is post is static! :)"
-        cell.timeLabel.text = "3 hours ago"
-        print("NEW CEELLLLL")
+
+        let post = self.shopsPostsArray[indexPath.item]
+        cell.nameLabel.text = post.username
+        cell.coffeeShopLabel.text = post.shop
+        cell.caffeineAmount.text = String(post.caffeine) + " mgs"
+        cell.menuItemName.text = post.item
+        cell.postCaption.text = post.caption
+        cell.timeLabel.text = timeAgoFormat(post.date)
         return cell
     }
     

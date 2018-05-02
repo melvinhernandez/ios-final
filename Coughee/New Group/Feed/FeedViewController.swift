@@ -45,7 +45,6 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
                 if let posts = snapshot.value as? [String:AnyObject] {
                     print(posts)
                     for (_, val) in posts {
-                        
                         let post = val
                         let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String)
                         
