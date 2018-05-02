@@ -14,15 +14,17 @@ class Post {
     var shop: String
     var caffeine: Int
     var caption: String
-    var date: String
+    var date: Date
     
-    init(username: String, item: String, shop: String, caffeine: Int, caption: String, date:String) {
+    init(username: String, item: String, shop: String, caffeine: Int, caption: String, dateString:String) {
         self.username = username
         self.item = item
         self.shop = shop
         self.caffeine = caffeine
         self.caption = caption
-        self.date = date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        self.date = dateFormatter.date(from: dateString)!
     }
     
 }
