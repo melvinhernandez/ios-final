@@ -34,7 +34,65 @@
 		B0A8C5C72075FC910072FA2A /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0A8C5C62075FC910072FA2A /* Background.jpg */; };
 		B0C8B62D20927FD300F8B815 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8B62C20927FD300F8B815 /* CurrentUser.swift */; };
 		B0C8B62F2092D61300F8B815 /* CoffeeShopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C8B62E2092D61300F8B815 /* CoffeeShopInfoView.swift */; };
+		CE50A50E2093363000DE711C /* UserContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A50D2093363000DE711C /* UserContent.swift */; };
+		CE50A5102093365B00DE711C /* UserGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A50F2093365B00DE711C /* UserGraphView.swift */; };
+		CE50A512209336AC00DE711C /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A511209336AC00DE711C /* UserInfoView.swift */; };
+		CE50A514209336CF00DE711C /* UserMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50A513209336CF00DE711C /* UserMenuBar.swift */; };
+		CEAE517020946286002EBB76 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAE516D20946271002EBB76 /* Charts.framework */; };
+		CEAE517120946286002EBB76 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CEAE516D20946271002EBB76 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CEAE51632094624F002EBB76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEAE515E2094624E002EBB76 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		CEAE51652094624F002EBB76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEAE515E2094624E002EBB76 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+		CEAE516C20946271002EBB76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEAE516720946271002EBB76 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		CEAE516E20946271002EBB76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEAE516720946271002EBB76 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+		CEAE517220946286002EBB76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEAE516720946271002EBB76 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A58A4ED274A941CA248EA921;
+			remoteInfo = Charts;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CE2CB90020946134000D5737 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CEAE517120946286002EBB76 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		07302F6C208BDD0300C4A217 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
@@ -67,6 +125,13 @@
 		B0C8B62C20927FD300F8B815 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		B0C8B62E2092D61300F8B815 /* CoffeeShopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopInfoView.swift; sourceTree = "<group>"; };
 		C4B9FBF799DA85288838660F /* Pods_Coughee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Coughee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE2CB8ED209460AE000D5737 /* Charts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Charts; sourceTree = "<group>"; };
+		CE50A50D2093363000DE711C /* UserContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContent.swift; sourceTree = "<group>"; };
+		CE50A50F2093365B00DE711C /* UserGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGraphView.swift; sourceTree = "<group>"; };
+		CE50A511209336AC00DE711C /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		CE50A513209336CF00DE711C /* UserMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuBar.swift; sourceTree = "<group>"; };
+		CEAE515E2094624E002EBB76 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Coughee/Charts.xcodeproj; sourceTree = "<group>"; };
+		CEAE516720946271002EBB76 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		D3F5C7F61916E01208C6A3FB /* Pods-Coughee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coughee.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Coughee/Pods-Coughee.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D45953D2CCAC5DC11C0DAE2 /* Pods_Coughee.framework in Frameworks */,
+				CEAE517020946286002EBB76 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +151,8 @@
 		70198EFE760969B2B29FC5BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEAE515E2094624E002EBB76 /* Charts.xcodeproj */,
+				CE2CB8ED209460AE000D5737 /* Charts */,
 				C4B9FBF799DA85288838660F /* Pods_Coughee.framework */,
 			);
 			name = Frameworks;
@@ -136,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				B03CEA4D2075BB9900601248 /* GoogleService-Info.plist */,
+				CEAE516720946271002EBB76 /* Charts.xcodeproj */,
 				B03CEA3A2075BA2E00601248 /* Coughee */,
 				B03CEA392075BA2E00601248 /* Products */,
 				71590109FA7DB7730884B4ED /* Pods */,
@@ -179,6 +248,10 @@
 			isa = PBXGroup;
 			children = (
 				B04636CA20882DE900E6E4E7 /* UserViewController.swift */,
+				CE50A50D2093363000DE711C /* UserContent.swift */,
+				CE50A50F2093365B00DE711C /* UserGraphView.swift */,
+				CE50A511209336AC00DE711C /* UserInfoView.swift */,
+				CE50A513209336CF00DE711C /* UserMenuBar.swift */,
 			);
 			path = "User Profile";
 			sourceTree = "<group>";
@@ -240,6 +313,24 @@
 			path = "App Utilities";
 			sourceTree = "<group>";
 		};
+		CEAE515F2094624E002EBB76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEAE51642094624F002EBB76 /* Charts.framework */,
+				CEAE51662094624F002EBB76 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEAE516820946271002EBB76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEAE516D20946271002EBB76 /* Charts.framework */,
+				CEAE516F20946271002EBB76 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -253,10 +344,12 @@
 				B03CEA362075BA2E00601248 /* Resources */,
 				7B698BEA448C8432A8ADC2AC /* [CP] Embed Pods Frameworks */,
 				7ECDAE3E445CD99388C24C75 /* [CP] Copy Pods Resources */,
+				CE2CB90020946134000D5737 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CEAE517320946286002EBB76 /* PBXTargetDependency */,
 			);
 			name = Coughee;
 			productName = Coughee;
@@ -290,12 +383,53 @@
 			mainGroup = B03CEA2F2075BA2E00601248;
 			productRefGroup = B03CEA392075BA2E00601248 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CEAE515F2094624E002EBB76 /* Products */;
+					ProjectRef = CEAE515E2094624E002EBB76 /* Charts.xcodeproj */;
+				},
+				{
+					ProductGroup = CEAE516820946271002EBB76 /* Products */;
+					ProjectRef = CEAE516720946271002EBB76 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B03CEA372075BA2E00601248 /* Coughee */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CEAE51642094624F002EBB76 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = CEAE51632094624F002EBB76 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CEAE51662094624F002EBB76 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = CEAE51652094624F002EBB76 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CEAE516D20946271002EBB76 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = CEAE516C20946271002EBB76 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CEAE516F20946271002EBB76 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = CEAE516E20946271002EBB76 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B03CEA362075BA2E00601248 /* Resources */ = {
@@ -411,13 +545,17 @@
 				B03653D220785C07006019D3 /* CoffeeShop.swift in Sources */,
 				B00F4B76207F48E400FBAABC /* BaseCollectionCell.swift in Sources */,
 				B00F4B73207F42B100FBAABC /* constants.swift in Sources */,
+				CE50A50E2093363000DE711C /* UserContent.swift in Sources */,
 				B00F4B6F207EC64B00FBAABC /* EntryController.swift in Sources */,
+				CE50A512209336AC00DE711C /* UserInfoView.swift in Sources */,
+				CE50A514209336CF00DE711C /* UserMenuBar.swift in Sources */,
 				B0A8C5C52075F7B50072FA2A /* LoginCoordinator.swift in Sources */,
 				B03653D4207861F7006019D3 /* CoffeeShopCell.swift in Sources */,
 				B04636D3208869C400E6E4E7 /* CoffeeShopsTable.swift in Sources */,
 				B0A8C5C32075F7650072FA2A /* OverridenLoginViewController.swift in Sources */,
 				07302F6D208BDD0300C4A217 /* MenuItem.swift in Sources */,
 				B04636D920886A9A00E6E4E7 /* CreatePostViewController.swift in Sources */,
+				CE50A5102093365B00DE711C /* UserGraphView.swift in Sources */,
 				B05FF2F9207DC88E00360625 /* PostCell.swift in Sources */,
 				B0C8B62D20927FD300F8B815 /* CurrentUser.swift in Sources */,
 				07302F6F208D639200C4A217 /* Post.swift in Sources */,
@@ -425,6 +563,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CEAE517320946286002EBB76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = CEAE517220946286002EBB76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B03CEA442075BA2E00601248 /* LaunchScreen.storyboard */ = {
@@ -549,13 +695,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D3F5C7F61916E01208C6A3FB /* Pods-Coughee.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 86A8H35BF4;
+				DEVELOPMENT_TEAM = L65HQFGA4Z;
 				INFOPLIST_FILE = Coughee/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ios.decal.Coughee;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.decal.Coughee123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -565,13 +715,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3F6857DCFB7BDD0198B6509E /* Pods-Coughee.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 86A8H35BF4;
+				DEVELOPMENT_TEAM = L65HQFGA4Z;
 				INFOPLIST_FILE = Coughee/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ios.decal.Coughee;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.decal.Coughee123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
