@@ -2,7 +2,7 @@
 //  UserViewController.swift
 //  Coughee
 //
-//  Created by Melvin  Hernandez on 4/18/18.
+//  Created by Juan Cervantes and Melvin  Hernandez on 4/18/18.
 //  Copyright © 2018 UC Berkeley. All rights reserved.
 //
 
@@ -18,7 +18,9 @@ class UserViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     private let currentUser = CurrentUser()
     
-    var postsArray = [Post]()
+    var UserPostsArray = [Post]()
+    var caffeineIntake = 0
+    var userRefKeys = [String]()
     let dbRef = Database.database().reference()
     
     
@@ -45,21 +47,43 @@ class UserViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func retrieveData() {
-        self.postsArray = []
+        self.UserPostsArray = []
+        self.userRefKeys = []
+        self.caffeineIntake = 0
+        dbRef.child("Users").child(currentUser.id).observeSingleEvent(of: .value, with: { snapshot -> Void in
+            if snapshot.exists() {
+                if let references = snapshot.value as? [String:NSDictionary] {
+                    for (_, val) in references {
+                        let reference = val
+                        for (_, value) in reference {
+                            self.userRefKeys.append((value as? String)!)
+                        }
+                    }
+                }
+            }
+        })
         dbRef.child("Posts").observeSingleEvent(of: .value, with: { snapshot -> Void in
             if snapshot.exists() {
                 if let posts = snapshot.value as? [String:AnyObject] {
-                    print(posts)
-                    for (_, val) in posts {
-                        
-                        let post = val
-                        let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String)
-                        
-                        self.postsArray.append(newPost)
+                    for key in posts.keys {
+                        if self.userRefKeys.contains(key) {
+                            let post = posts[key] as! [String:AnyObject]
+                            let postDateAsString = post["date"]!
+                            let dateFormatterGet = DateFormatter()
+                            dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                            let postDate: Date? = dateFormatterGet.date(from: postDateAsString as! String)
+//                            let postDate: Date? = dateFormatterGet.date(from: "2018-04-20 01:01:01")
+                            if let diff = Calendar.current.dateComponents([.hour], from: postDate! as Date, to: Date()).hour, diff < 24 {
+                                self.caffeineIntake += post["caffeine"] as! Int
+                            }
+                            let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String)
+                            self.UserPostsArray.append(newPost)
+                        }
                     }
-                    self.postsArray = self.postsArray.sorted(by: {
+                    self.UserPostsArray = self.UserPostsArray.sorted(by: {
                         $0.date.compare($1.date) == .orderedDescending
                     })
+                    print(self.caffeineIntake)
                     self.collectionView?.reloadData()
                 }
             }
@@ -74,17 +98,18 @@ class UserViewController: UICollectionViewController, UICollectionViewDelegateFl
         if section == 0 {
             return 1
         }
-        return postsArray.count
+        return self.UserPostsArray.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: meterCellId, for: indexPath) as! MeterCell
+            cell.mgs = self.caffeineIntake
             cell.setupViews()
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: postCellId, for: indexPath) as! PostCell
-            let post = postsArray[indexPath.item]
+            let post = self.UserPostsArray[indexPath.item]
             cell.nameLabel.text = post.username
             cell.coffeeShopLabel.text = post.shop
             cell.caffeineAmount.text = String(post.caffeine) + " mgs"

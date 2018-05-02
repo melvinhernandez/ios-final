@@ -78,7 +78,6 @@ class CoffeeShopPostsView: BaseCollectionCell, UICollectionViewDelegate, UIColle
         dbRef.child("Posts").observeSingleEvent(of: .value, with: { snapshot -> Void in
             if snapshot.exists() {
                 if let posts = snapshot.value as? [String:AnyObject] {
-                    print(posts)
                     for key in posts.keys {
                         if self.referenceKeys.contains(key) {
                             let post = posts[key] as! [String:AnyObject]
@@ -86,7 +85,6 @@ class CoffeeShopPostsView: BaseCollectionCell, UICollectionViewDelegate, UIColle
                             self.shopsPostsArray.append(newPost)
                         }
                     }
-                    print(self.shopsPostsArray)
                     self.shopsPostsArray = self.shopsPostsArray.sorted(by: {
                         $0.date.compare($1.date) == .orderedDescending
                     })

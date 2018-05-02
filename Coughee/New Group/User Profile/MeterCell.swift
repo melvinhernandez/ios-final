@@ -68,7 +68,7 @@ class MeterCell: BasePostCell {
     
     let mgLabel : UILabel = {
         let label = UILabel()
-        label.text = "185mg"
+        label.text = "0mgs"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 28, weight: .heavy)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -129,6 +129,30 @@ class MeterCell: BasePostCell {
         
         self.addSubview(textContainer)
         textContainer.addSubview(messageLabel)
+        if let milli = self.mgs {
+            meter.progress = CGFloat(milli)/400
+            mgLabel.text = "\(milli)mgs"
+        }
+        if meter.progress < 0.6 {
+            meter.barBorderColor = MeterCell.borderColors[0]
+            meter.barFillColor = MeterCell.fillColors[0]
+            meter.barBackgroundColor = MeterCell.bgColors[0]
+            meter.labelTextColor = MeterCell.fillColors[0]
+            messageContent.text = MeterCell.message[0]
+        } else if (meter.progress > 0.6) && (meter.progress < 0.9) {
+            meter.barBorderColor = MeterCell.borderColors[1]
+            meter.barFillColor = MeterCell.fillColors[1]
+            meter.barBackgroundColor = MeterCell.bgColors[1]
+            meter.labelTextColor = MeterCell.fillColors[1]
+            messageContent.text = MeterCell.message[1]
+        } else {
+            meter.barBorderColor = MeterCell.borderColors[2]
+            meter.barFillColor = MeterCell.fillColors[2]
+            meter.barBackgroundColor = MeterCell.bgColors[2]
+            meter.labelTextColor = MeterCell.fillColors[2]
+            messageContent.text = MeterCell.message[2]
+        }
+        meter.animateTo(progress: meter.progress)
         textContainer.addSubview(mgLabel)
         textContainer.addSubview(dayLabel)
         
