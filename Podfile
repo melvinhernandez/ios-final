@@ -22,4 +22,6 @@ target 'Coughee' do
   # Pod for forms
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'TransitionButton'
+  # Pod for meter
+  pod "GTProgressBar"
 end

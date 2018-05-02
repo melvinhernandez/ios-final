@@ -55,6 +55,7 @@ PODS:
     - "GoogleToolboxForMac/NSString+URLArguments (= 2.1.4)"
   - "GoogleToolboxForMac/NSString+URLArguments (2.1.4)"
   - GTMSessionFetcher/Core (1.1.15)
+  - GTProgressBar (0.2.4)
   - ILLoginKit (1.0.1):
     - FBSDKLoginKit (= 4.31.0)
     - Validator (= 3.0.2)
@@ -77,6 +78,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
+  - GTProgressBar
   - ILLoginKit
   - SkyFloatingLabelTextField (~> 3.0)
   - TransitionButton
@@ -99,6 +101,7 @@ SPEC REPOS:
     - GooglePlaces
     - GoogleToolboxForMac
     - GTMSessionFetcher
+    - GTProgressBar
     - ILLoginKit
     - leveldb-library
     - nanopb
@@ -123,6 +126,7 @@ SPEC CHECKSUMS:
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
+  GTProgressBar: 1d79e4a627e997263b612c7e6589126dfe5645b8
   ILLoginKit: 6f717fa907114986b6914d1502bf8bd40b3720e5
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -130,6 +134,6 @@ SPEC CHECKSUMS:
   TransitionButton: d271030914c84a00b54b4d983446944d2875e7ba
   Validator: bf211c1d71b3f910d230c09c70e62429d0fef63a
 
-PODFILE CHECKSUM: 8e0c827225dbe485cf0151b4a0dae9bdfdc98af0
+PODFILE CHECKSUM: 047d762acd5a608661ae0bda4fe0a469ee61d013
 
 COCOAPODS: 1.5.0

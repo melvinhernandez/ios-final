@@ -40,7 +40,8 @@ class CustomTabBarController: UITabBarController {
         feedController.tabBarItem.selectedImage = UIImage(named: "cup-selected")
         feedController.tabBarItem.imageInsets = UIEdgeInsetsMake(0, 3, -3, -5)
         
-        let userProfileController = UserViewController()
+        let userLayout = UICollectionViewFlowLayout()
+        let userProfileController = UserViewController(collectionViewLayout: userLayout)
         let userNavigationController = UINavigationController(rootViewController: userProfileController)
         
         userProfileController.tabBarItem.title = "User"

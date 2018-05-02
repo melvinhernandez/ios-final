@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5600BC0EA73CE8233A0AF83D9721B185"
-               BlueprintName = "TransitionButton"
+               BlueprintIdentifier = "F900866A3F3BA88A07A675DDB2CE90F8"
+               BlueprintName = "GTProgressBar"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "TransitionButton.framework">
+               BuildableName = "GTProgressBar.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -16,6 +16,7 @@
 		B00F4B76207F48E400FBAABC /* BaseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F4B75207F48E400FBAABC /* BaseCollectionCell.swift */; };
 		B00F4B78207F59EA00FBAABC /* CoffeeShopContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F4B77207F59EA00FBAABC /* CoffeeShopContent.swift */; };
 		B034DBBB209962D800F0723D /* CoffeeShopPostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B034DBBA209962D800F0723D /* CoffeeShopPostsView.swift */; };
+		B034DBBD2099718700F0723D /* MeterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B034DBBC2099718700F0723D /* MeterCell.swift */; };
 		B03653D220785C07006019D3 /* CoffeeShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03653D120785C07006019D3 /* CoffeeShop.swift */; };
 		B03653D4207861F7006019D3 /* CoffeeShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03653D3207861F7006019D3 /* CoffeeShopCell.swift */; };
 		B03CEA3C2075BA2E00601248 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03CEA3B2075BA2E00601248 /* AppDelegate.swift */; };
@@ -81,6 +82,7 @@
 		B00F4B75207F48E400FBAABC /* BaseCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseCollectionCell.swift; path = "Coughee/New Group/Feed/BaseCollectionCell.swift"; sourceTree = SOURCE_ROOT; };
 		B00F4B77207F59EA00FBAABC /* CoffeeShopContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopContent.swift; sourceTree = "<group>"; };
 		B034DBBA209962D800F0723D /* CoffeeShopPostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopPostsView.swift; sourceTree = "<group>"; };
+		B034DBBC2099718700F0723D /* MeterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterCell.swift; sourceTree = "<group>"; };
 		B03653D120785C07006019D3 /* CoffeeShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShop.swift; sourceTree = "<group>"; };
 		B03653D3207861F7006019D3 /* CoffeeShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopCell.swift; sourceTree = "<group>"; };
 		B03CEA382075BA2E00601248 /* Coughee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coughee.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,6 +229,7 @@
 				CE50A50F2093365B00DE711C /* UserGraphView.swift */,
 				CE50A511209336AC00DE711C /* UserInfoView.swift */,
 				CE50A513209336CF00DE711C /* UserMenuBar.swift */,
+				B034DBBC2099718700F0723D /* MeterCell.swift */,
 			);
 			path = "User Profile";
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GTProgressBar/GTProgressBar.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/ILLoginKit/ILLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
@@ -421,6 +425,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTProgressBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ILLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
@@ -500,6 +505,7 @@
 				CE50A514209336CF00DE711C /* UserMenuBar.swift in Sources */,
 				B0A8C5C52075F7B50072FA2A /* LoginCoordinator.swift in Sources */,
 				B03653D4207861F7006019D3 /* CoffeeShopCell.swift in Sources */,
+				B034DBBD2099718700F0723D /* MeterCell.swift in Sources */,
 				B04636D3208869C400E6E4E7 /* CoffeeShopsTable.swift in Sources */,
 				B0A8C5C32075F7650072FA2A /* OverridenLoginViewController.swift in Sources */,
 				07302F6D208BDD0300C4A217 /* MenuItem.swift in Sources */,
