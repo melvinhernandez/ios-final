@@ -15,13 +15,6 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
     var postsArray = [Post]()
     
     
-    let logout: UIButton = {
-        let button = UIButton()
-        button.titleLabel?.text = "LOGOUT"
-        button.tintColor = .white
-        return button
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Feed"
@@ -31,9 +24,6 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.register(PostCell.self, forCellWithReuseIdentifier: cellId)
     }
     override func viewWillAppear(_ animated: Bool) {
-        // Reload the tablebview.
-//       postTableView.reloadData()
-        // Update the data from Firebase
         retrieveData()
     }
     
@@ -43,11 +33,9 @@ class FeedViewController: UICollectionViewController, UICollectionViewDelegateFl
         dbRef.child("Posts").observeSingleEvent(of: .value, with: { snapshot -> Void in
             if snapshot.exists() {
                 if let posts = snapshot.value as? [String:AnyObject] {
-                    print(posts)
                     for (_, val) in posts {
                         let post = val
                         let newPost = Post(username: post["username"]! as! String, item: post["menuItem"]! as! String, shop: post["coffeeShop"]! as! String, caffeine: post["caffeine"]! as! Int, caption: post["caption"]! as! String, dateString: post["date"]! as! String, img: post["img"] as! String)
-                        print("post img in feed is: \(post["img"] as! String)")
                         self.postsArray.append(newPost)
                     }
                     self.postsArray = self.postsArray.sorted(by: {

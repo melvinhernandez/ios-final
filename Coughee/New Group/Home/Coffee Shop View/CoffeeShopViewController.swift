@@ -49,7 +49,6 @@ class CoffeeShopViewController: UIViewController {
     }
     
     @objc func createNewPost() {
-        print("hello")
         let newPostView = CreatePostViewController()
         self.present(newPostView, animated: true, completion: nil)
     }

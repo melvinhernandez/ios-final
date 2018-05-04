@@ -262,7 +262,6 @@ extension UIView {
         var viewsDictionary = [String: UIView]()
         for (index, view) in views.enumerated() {
             let key = "v\(index)"
-            print("adding constraint: \(key)")
             viewsDictionary[key] = view
             view.translatesAutoresizingMaskIntoConstraints = false
         }

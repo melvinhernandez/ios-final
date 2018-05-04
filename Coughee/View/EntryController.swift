@@ -23,9 +23,31 @@ class EntryController: UIViewController {
         return controller
     }()
     
+    let appImg: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "entry-bg")
+        img.contentMode = .scaleAspectFit
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        setupBackground()
+    }
+    
+    func setupBackground() {
+        self.view.addSubview(appImg)
+        
+        let imgCons = [
+            appImg.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3),
+            appImg.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            appImg.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            appImg.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
+        ]
+        
+        NSLayoutConstraint.activate(imgCons)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,9 +56,7 @@ class EntryController: UIViewController {
         if isLoggedIn() {
             let entry = CustomTabBarController()
             present(entry, animated: true, completion: nil)
-            print("hello")
         } else {
-            print("is logged in")
             loginCoordinator.start()
         }
     }
@@ -44,7 +64,6 @@ class EntryController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
     
     fileprivate func isLoggedIn() -> Bool {
         return Auth.auth().currentUser != nil

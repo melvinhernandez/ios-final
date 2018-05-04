@@ -16,6 +16,9 @@ class CoffeeShopsTable: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !CurrentUser.isLoggedIn() {
+            self.dismiss(animated: true, completion: nil)
+        }
         navigationItem.title = "Coffee Shops"
         tableView.register(CoffeeShopCell.self, forCellReuseIdentifier: "coffeeShopCell")
         tableView.separatorColor = .white
@@ -66,13 +69,6 @@ class CoffeeShopsTable: UITableViewController {
                 // TODO: handle the error.
                 print("Error: \(error.localizedDescription)")
             } else {
-//                if let cachedShop = self.cachedPhotos[placeID] {
-//                    DispatchQueue.main.async {
-//                        cell.backgroundImageView.image = cachedShop.image
-//                        cell.titleText.text = cachedShop.name
-//                        cell.descriptionText.text = cachedShop.open! ? "Closed" : "Open"
-//                    }
-//                }
                 if let firstPhoto = photos?.results.first {
                     self.loadImageForMetadata(photoMetadata: firstPhoto, shop: shop, cell: cell)
                 }

@@ -112,12 +112,10 @@ class CoffeeShop {
             self.long = place.coordinate.longitude
             let isOpen = place.openNowStatus
             switch isOpen {
-                case .yes:
-                    self.open = true
                 case .no:
                     self.open = false
-                case .unknown:
-                    self.open = false
+                default:
+                    self.open = true
             }
         })
     }

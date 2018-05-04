@@ -26,6 +26,10 @@ class CurrentUser {
         getUserImage()
     }
     
+    static func isLoggedIn() -> Bool {
+        return Auth.auth().currentUser != nil
+    }
+        
     /*
      Gets the posts IDs for the current user.
      */
@@ -53,7 +57,6 @@ class CurrentUser {
         dbRef.child("Users").child(id).child("Image").observeSingleEvent(of: .value, with: { (snapshot) in
             let img = snapshot.value as? String ?? "Img1"
             self.image = img
-            print("recovered user img as: \(img)")
         })
     }
     

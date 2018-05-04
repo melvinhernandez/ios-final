@@ -19,7 +19,7 @@ class CoffeeShopCell: BaseCell {
     
     let content: UIView = {
         let overlay = UIView()
-        overlay.backgroundColor = UIColor(displayP3Red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)
+        overlay.backgroundColor = UIColor(displayP3Red: 0/255, green: 0/255, blue: 0/255, alpha: 0.3)
         return overlay
     }()
     

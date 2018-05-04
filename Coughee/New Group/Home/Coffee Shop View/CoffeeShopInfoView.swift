@@ -218,7 +218,6 @@ class HoursCell: UITableViewCell {
     }()
     
     func setupHours() {
-        print("Setting up Hours")
         self.addSubview(hourLabel)
         let textLabelCons = [
             hourLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),

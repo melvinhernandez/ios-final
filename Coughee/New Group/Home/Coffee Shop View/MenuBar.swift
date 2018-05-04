@@ -53,7 +53,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
             horizontalBarX!,
             horizontalBar.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             horizontalBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/3),
-            horizontalBar.heightAnchor.constraint(equalToConstant: 4)])
+            horizontalBar.heightAnchor.constraint(equalToConstant: 3)])
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

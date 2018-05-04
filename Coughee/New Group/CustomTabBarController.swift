@@ -11,9 +11,22 @@
 import UIKit
 import ILLoginKit
 import FirebaseAuth
+import FontAwesome_swift
 
 class CustomTabBarController: UITabBarController {
+
     
+    let logoutButton: UIBarButtonItem = {
+        let rightButtonItem = UIBarButtonItem(
+            title: String.fontAwesomeIcon(code: "fa-sign-out"),
+            style: UIBarButtonItemStyle.plain,
+            target: self,
+            action: #selector(logoutButtonAction)
+        )
+        let attributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue): UIFont.fontAwesome(ofSize: 20)] as [NSAttributedStringKey: Any]
+        rightButtonItem.setTitleTextAttributes(attributes, for: UIControlState.normal)
+        return rightButtonItem
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +60,7 @@ class CustomTabBarController: UITabBarController {
         userProfileController.tabBarItem.title = "User"
         userProfileController.tabBarItem.image = UIImage(named: "user")
         userProfileController.tabBarItem.selectedImage = UIImage(named: "user-selected")
+        userProfileController.navigationItem.rightBarButtonItem = logoutButton
         
         
         viewControllers = [coffeeNavigationController, userFeedNavigationController, userNavigationController]
@@ -57,4 +71,15 @@ class CustomTabBarController: UITabBarController {
         tabBar.layer.borderColor = UIColor.clear.cgColor
         tabBar.clipsToBounds = true
     }
+    
+    @objc func logoutButtonAction() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            self.dismiss(animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+
 }

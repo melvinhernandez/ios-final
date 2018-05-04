@@ -22,19 +22,15 @@ class UserViewController: UICollectionViewController, UICollectionViewDelegateFl
     var caffeineIntake = 0
     var userRefKeys = [String]()
     let dbRef = Database.database().reference()
-    
-    
-    let logout: UIButton = {
-        let button = UIButton()
-        button.titleLabel?.text = "LOGOUT"
-        button.tintColor = .white
-        return button
-    }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !CurrentUser.isLoggedIn() {
+            self.dismiss(animated: true, completion: nil)
+        }
         navigationItem.title = currentUser.username
-        
+
         collectionView?.backgroundColor = Colors.gray
         collectionView?.alwaysBounceVertical = true
         collectionView?.register(PostCell.self, forCellWithReuseIdentifier: postCellId)
@@ -47,7 +43,6 @@ class UserViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func retrieveData() {
-        print("Retrieving posts from userviewcontroller")
         self.UserPostsArray = []
         self.userRefKeys = []
         self.caffeineIntake = 0
@@ -77,8 +72,6 @@ class UserViewController: UICollectionViewController, UICollectionViewDelegateFl
                                 self.UserPostsArray = self.UserPostsArray.sorted(by: {
                                     $0.date.compare($1.date) == .orderedDescending
                                 })
-                                print("intake is:")
-                                print(self.caffeineIntake)
                                 self.collectionView?.reloadData()
                             }
                         }
